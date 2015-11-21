@@ -70,7 +70,9 @@ alias i=ionic
 PATH="$PATH:/usr/local/Cellar/openvpn/2.3.6/sbin"
 
 
-source ~/.someconflicts.sh
+if [ -f ~/.someconflicts.sh ] ; then
+    source ~/.someconflicts.sh
+fi
 
 export HISTCONTROL=ignorespace
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
