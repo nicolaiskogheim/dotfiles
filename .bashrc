@@ -1,6 +1,15 @@
+#!/usr/bin/env bash
 #Git stuff
-GIT_PROMPT_ONLY_IN_REPO=1
+export GIT_PROMPT_ONLY_IN_REPO=1
 #GIT_PROMPT_SHOW_LAST_COMMAND_INDICATOR=1
+
+trim() {
+  local s2 s="$*"
+  # note the tab character in the expressions of the following two lines when copying
+  until s2="${s#[   ]}"; [ "$s2" = "$s" ]; do s="$s2"; done
+  until s2="${s%[   ]}"; [ "$s2" = "$s" ]; do s="$s2"; done
+  echo "$s"
+}
 
 # This isn't working
 if [ "$0" = "bash" ]; then
@@ -21,17 +30,19 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 # User defined completion
-source /etc/bash_completion.d/*
+# source /etc/bash_completion.d/* # No, please no.
 
 
-## Brew completion
-source /usr/local/etc/bash_completion.d/*
+if command -v brew >/dev/null 2/&1 ; then
+    ## Brew completion
+    source /usr/local/etc/bash_completion.d/*
 
-## To use GNU-utilities
+    ## To use GNU-utilities
 
-PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
-PATH="$(brew --prefix)/sbin:$PATH"
+    PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+    MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+    PATH="$(brew --prefix)/sbin:$PATH"
+fi
 
 # java
 export JUNIT_HOME="$HOME/java"
@@ -43,11 +54,6 @@ export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-cor
 
 alias gpg="gpg2"
 export EDITOR=vim
-
-# quicklook
-ql() {
-  qlmanage -p $1 &> /dev/null
-}
 
 
 export LC_ALL=en_US.UTF-8
@@ -63,11 +69,34 @@ alias i=ionic
 # openvpn
 PATH="$PATH:/usr/local/Cellar/openvpn/2.3.6/sbin"
 
-alias emacs="cowthink Noonononono. Nope."
-alias stripcolors='gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
-function myfunc() {
-  echo "$1";
-}
+source ~/.someconflicts.sh
 
-alias tks="tmux kill-session"
+export HISTCONTROL=ignorespace
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Elimd server
+alias eclimd="/Applications/Eclipse.app/Contents/Eclipse/eclimd"
+alias cal='cal | grep -C100 --color=always "\b$(trim $(date +%e))\b"'
+
+# # shellcheck disable=SC1091
+# # shellcheck source=/Users/nicolai/bin/getKeyboardLayout.sh
+# source "$HOME/bin/getKeyboardLayout.sh"
+
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+stty -ixon
+
+export FINDBUGS_HOME=/usr/local/Cellar/findbugs/3.0.1/libexec
+
+
+# Have this last to make sure my own bins are searched first
+# PATH="$HOME/bin:$HOME/bin/git-radar:$PATH"
+
+
+# Decrease animation duration when using expose
+defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+export GVM_DIR="/Users/nicolai/.gvm"
+[[ -s "/Users/nicolai/.gvm/bin/gvm-init.sh" ]] && source "/Users/nicolai/.gvm/bin/gvm-init.sh"
+
