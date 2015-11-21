@@ -33,7 +33,7 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 # source /etc/bash_completion.d/* # No, please no.
 
 
-if command -v brew >/dev/null 2>/&1 ; then
+if command -v brew >/dev/null 2>&1 ; then
     ## Brew completion
     source /usr/local/etc/bash_completion.d/*
 
