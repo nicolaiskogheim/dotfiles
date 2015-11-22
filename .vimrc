@@ -5,7 +5,7 @@ let maplocalleader = "\<space>"
 
 " Autoinstall vim-plug {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.nvim/autoload/plug.vim --create-dirs
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
@@ -26,7 +26,7 @@ Plug 'Cofyc/vim-uncrustify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
 " {{{ fzf options
-  let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+  let g:fzf_vim_statusline = 0 " disable statusline overwriting
 
   nnoremap <silent> <leader>t :Files<CR>
   nnoremap <silent> <leader>b :Buffers<CR>
