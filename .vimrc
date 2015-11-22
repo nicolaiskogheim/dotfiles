@@ -161,6 +161,16 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'
+" {{{ vim-tmux-navigator options
+    let g:tmux_navigator_no_mappings = 1
+
+    nnoremap <silent> <c-s> :TmuxNavigateLeft<cr>
+    nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+    nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+    nnoremap <silent> <c-f> :TmuxNavigateRight<cr>
+    nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+" }}}
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'mhinz/vim-startify'
 " {{{ startify options
@@ -239,13 +249,6 @@ let base16colorspace=256
 colorscheme lettuce
 set background=dark
 
-
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <c-s> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-f> :TmuxNavigateRight<cr>
-nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 " Makes <C-p> and <C-n> behave like <Up> and <Down>
 " in command line mode.
