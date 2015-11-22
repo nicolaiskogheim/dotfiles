@@ -94,7 +94,7 @@ export FINDBUGS_HOME=/usr/local/Cellar/findbugs/3.0.1/libexec
 # Have this last to make sure my own bins are searched first
 # PATH="$HOME/bin:$HOME/bin/git-radar:$PATH"
 
-if [ "$(uname -s)" == "Darwin" ] ; then
+if [ "$(uname -s)" = "Darwin" ] ; then
     # Decrease animation duration when using expose
     defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
 fi
