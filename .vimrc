@@ -170,7 +170,8 @@ let g:startify_bookmarks = [ { 'v': '~/.vimrc' },
                             \{ 'b': '~/.bashrc' },
                             \{ 'z': '~/.zshrc' },
                             \{ 't': '~/.tmux.conf' },
-                            \{ 'g': '~/.gitconfig' }
+                            \{ 'g': '~/.gitconfig' },
+                            \{ 'c': '~/.ssh/config' }
                             \]
 
 let g:startify_custom_indices = ['r', 'u', 'o', 'n', 'm', 'aa', 'af', 'ad', 'ag', 'aj', 'al', 'ak', 'da', 'df', 'dd', 'dg', 'dj', 'dl', 'dk', 'lf', 'ld', 'lg', 'lj', 'lh', 'll', 'lk', 'la', 'oa', 'of', 'od', 'og', 'oj', 'ol', 'ok']
