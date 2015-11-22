@@ -1,7 +1,6 @@
 " vim:foldmethod=marker
 set nocompatible
-set viminfo='100,n/Users/nicolai/.vim/files/info/viminfo'
-
+set viminfo='100,n$HOME/.vim/files/info/viminfo'
 let maplocalleader = "\<space>"
 
 " Autoinstall vim-plug {{{
