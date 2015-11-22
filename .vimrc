@@ -1,3 +1,4 @@
+" vim:foldmethod=marker
 set nocompatible
 set viminfo='100,n/Users/nicolai/.vim/files/info/viminfo'
 
