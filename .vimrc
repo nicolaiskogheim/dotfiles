@@ -109,7 +109,7 @@ Plug 'scrooloose/syntastic'                 " Syntax checking
 " {{{ syntastic options
 let g:syntastic_c_compiler_options="-g -Wall -Wpedantic -Wextra -std=c99 -Wconversion"
 let g:syntastic_enable_signs=1              " mark syntax errors with :signs
-let g:syntastic_auto_jump=0                 "automatically jump to the error when saving the file
+let g:syntastic_auto_jump=0                 " automatically jump to the error when saving the file
 let g:syntastic_python_python_exec = '/usr/local/bin/python2.7'
 let g:syntastic_check_on_wq = 0
 let g:syntastic_java_javac_config_file_enabled = 1
