@@ -28,31 +28,6 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
-if ! zgen saved; then
-
-  zgen oh-my-zsh
-
-  zgen oh-my-zsh plugins/git
-  zgen oh-my-zsh plugins/fasd
-  zgen oh-my-zsh plugins/heroku
-  zgen oh-my-zsh plugins/pip
-  zgen load zsh-users/zsh-completions src
-  zgen load zsh-users/zsh-syntax-highlighting
-  zgen load zsh-users/zsh-history-substring-search
-  zgen oh-my-zsh plugins/vi-mode
-  #zgen load command-not-found
-  #zgen load autoenv
-  zgen oh-my-zsh plugins/gradle
-
-  zgen load Lokaltog/powerline
-  zgen oh-my-zsh plugins/colored-man-pages
-  zgen load chrissicool/zsh-256color
-  # zgen oh-my-zsh themes/robbyrussell
-  zgen load nicolaiskogheim/prompt prompt
-
-  zgen save
-fi
-
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -104,3 +79,32 @@ function TRAPUSR1() {
 
 export GIT_RADAR_ZSH_PID="$(echo $$)"
 export GIT_RADAR_ASYNC_EXEC=true
+
+if ! zgen saved; then
+
+  zgen oh-my-zsh
+
+  zgen oh-my-zsh plugins/git
+  zgen oh-my-zsh plugins/fasd
+  zgen oh-my-zsh plugins/heroku
+  zgen oh-my-zsh plugins/pip
+  zgen oh-my-zsh plugins/docker
+  zgen load zsh-users/zsh-completions src
+  zgen load zsh-users/zsh-history-substring-search
+  zgen oh-my-zsh plugins/vi-mode
+  #zgen load command-not-found
+  #zgen load autoenv
+  zgen oh-my-zsh plugins/gradle
+
+  zgen load Lokaltog/powerline
+  zgen oh-my-zsh plugins/colored-man-pages
+  zgen load chrissicool/zsh-256color
+  # zgen oh-my-zsh themes/robbyrussell
+  zgen load nicolaiskogheim/prompt prompt
+
+  # Must be after plugins and compinit
+  zgen load zsh-users/zsh-syntax-highlighting
+
+
+  zgen save
+fi
