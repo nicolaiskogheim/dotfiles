@@ -104,3 +104,5 @@ fi
 export GVM_DIR="/Users/nicolai/.gvm"
 [[ -s "/Users/nicolai/.gvm/bin/gvm-init.sh" ]] && source "/Users/nicolai/.gvm/bin/gvm-init.sh"
 
+alias doco='docker-compose'
+alias doma='docker-machine'
