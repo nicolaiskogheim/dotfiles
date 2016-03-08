@@ -74,6 +74,7 @@
 	smtpuser = nicolai.skogheim@gmail.com
 	smtpserverport = 587
 	from = nicolai.skogheim@gmail.com
+	confirm = auto
   #suppresscc = self
 [filter "lfs"]
 	clean = git lfs clean %f
