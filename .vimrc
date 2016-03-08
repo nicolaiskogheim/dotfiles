@@ -349,7 +349,7 @@ cmap w!! w !sudo tee % >/dev/null
 set laststatus=2
 "set fillchars+=stl:\ ,stlnc:\
 
-"Ingore stuff
+" File patterns to ignore {{{
 set wildignore+=node_modules
 set wildignore+=static/node_modules
 set wildignore+=static/bower_components
@@ -361,6 +361,7 @@ set wildignore+=*~
 set wildignore+=*.tgz
 set wildignore+=*.dSYM
 set wildignore+=build
+" }}}
 
 set modelines=1
 
