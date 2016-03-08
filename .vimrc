@@ -106,7 +106,7 @@ nmap <leader>ga <Plug>(EasyAlign)
 Plug 'justinmk/vim-dirvish'                   " # Directory viewer
 
 " Quickfix parsers
-Plug 'felixge/vim-nodejs-errorformat'
+Plug 'felixge/vim-nodejs-errorformat', { 'for' : 'js' }
 
 " Miscelaneous
 Plug 'junegunn/goyo.vim',        { 'on' : 'Goyo' }   " Zen-mode
