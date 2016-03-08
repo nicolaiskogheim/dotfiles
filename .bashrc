@@ -106,3 +106,9 @@ export GVM_DIR="/Users/nicolai/.gvm"
 
 alias doco='docker-compose'
 alias doma='docker-machine'
+
+local JFLAP
+JFLAP="/Users/nicolai/Downloads/JFLAP.jar"
+if [ -f "$FJLAP" ]
+    alias jflap='java -jar $JFLAP'
+fi
