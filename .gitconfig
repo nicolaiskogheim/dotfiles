@@ -38,7 +38,7 @@
   graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 	root = !pwd
 	exec = !exec
-  edit = !vim `git ls-files -m` -p
+  edit = !vim `git ls-files -m` -p # -p = Open one tab per file
   ed = !vim `git ls-files --other --exclude-standard`
 
   # List aliases
