@@ -59,8 +59,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=4000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt appendhistory autocd beep nomatch notify
 #setopt extendedglob 
 # End of lines configured by zsh-newuser-install
