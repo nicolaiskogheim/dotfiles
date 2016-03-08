@@ -1,11 +1,11 @@
 [user]
-	name = Nicolai Skogheim
-	email = nicolai.skogheim@gmail.com
-	github = nicolaiskogheim
+    name = Nicolai Skogheim
+    email = nicolai.skogheim@gmail.com
+    github = nicolaiskogheim
 [alias]
-	st = status --short
-	co = checkout
-	ci = commit
+    st = status --short
+    co = checkout
+    ci = commit
     cm = commit -m
     cam = commit --all -m
 
@@ -16,30 +16,32 @@
     bD = branch -D
 
   # Diff
-	dc = diff --cached
-	dlc = diff --cached HEAD^
-	sd = diff --color-words="[^[:space:]]"
+    dc = diff --cached
+    dlc = diff --cached HEAD^
+    sd = diff --color-words="[^[:space:]]"
   # sds = diff --color-words="[;\'\(\){}[\].,/\*]"
   # sds = diff --color-words="[.;\\']"
-	sdl = diff --color-words="[^[:space:]]" HEAD^..HEAD
-	dr  = "!f() { git diff "$1"^.."$1"; }; f"
-	lc  = "!f() { git ll "$1"^.."$1"; }; f"
+    sdl = diff --color-words="[^[:space:]]" HEAD^..HEAD
+    dr  = "!f() { git diff "$1"^.."$1"; }; f"
+    lc  = "!f() { git ll "$1"^.."$1"; }; f"
 
   # Log
-	la = log --all --graph --decorate --oneline
-	le = log --oneline --decorate
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-	lsd = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-	ml = "!git ll -1"
-	l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %n%s %C(white)- %an, %ar%Creset'
-	logd = log --stat --abbrev-commit
+    la = log --all --graph --decorate --oneline
+    le = log --oneline --decorate
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lsd = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    ml = "!git ll -1"
+    l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %n%s %C(white)- %an, %ar%Creset'
+    logd = log --stat --abbrev-commit
+
   # Tag
-	lt = describe --tags --abbrev=0
+    lt = describe --tags --abbrev=0
+
   # Utility
     save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
-	done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+    done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
     new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
     whatis = show --no-patch --pretty='tformat:%h (%s, %ad)' --date=short
@@ -47,56 +49,56 @@
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
     add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
-	root = !pwd
-	exec = !exec
-  edit = !vim `git ls-files -m` -p # -p = Open one tab per file
-  ed = !vim `git ls-files --other --exclude-standard`
+    root = !pwd
+    exec = !exec
+    edit = !vim `git ls-files -m` -p # -p = Open one tab per file
+    ed = !vim `git ls-files --other --exclude-standard`
 
 
   # Submodule
     sinit = submodule init
-	sdiff = !git diff && git submodule foreach 'git diff'
-	spush = push --recurse-submodules=on-demand
-	supdate = submodule update --remote --rebase
-	dcl = diff --cached -U10
+    sdiff = !git diff && git submodule foreach 'git diff'
+    spush = push --recurse-submodules=on-demand
+    supdate = submodule update --remote --rebase
+    dcl = diff --cached -U10
   
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
 [core]
-	pager = less -FXRS
-	editor = vim
-	excludesfile = ~/.gitignore
-	precomposeunicode = true
+    pager = less -FXRS
+    editor = vim
+    excludesfile = ~/.gitignore
+    precomposeunicode = true
 [push]
-	default = simple
+    default = simple
 [github]
-	user = nicolaiskogheim
+    user = nicolaiskogheim
 [ghi]
-	token = !security find-internet-password -a nicolaiskogheim -s github.com -l 'ghi token' -w
+    token = !security find-internet-password -a nicolaiskogheim -s github.com -l 'ghi token' -w
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+    clean = git hawser clean %f
+    smudge = git hawser smudge %f
+    required = true
 [sendemail]
-	smtpencryption = tls
-	smtpserver = smtp.gmail.com
-	smtpuser = nicolai.skogheim@gmail.com
-	smtpserverport = 587
-	from = nicolai.skogheim@gmail.com
-	confirm = auto
+    smtpencryption = tls
+    smtpserver = smtp.gmail.com
+    smtpuser = nicolai.skogheim@gmail.com
+    smtpserverport = 587
+    from = nicolai.skogheim@gmail.com
+    confirm = auto
   #suppresscc = self
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+    clean = git lfs clean %f
+    smudge = git lfs smudge %f
+    required = true
 [commit]
-	template = /Users/nicolai/.gitmessage
+    template = /Users/nicolai/.gitmessage
 [merge]
-	tool = vimdiff
-	conflictstyle = merge
+    tool = vimdiff
+    conflictstyle = merge
 [pull]
-	rebase = true
+    rebase = true
