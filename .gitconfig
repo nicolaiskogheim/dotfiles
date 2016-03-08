@@ -46,6 +46,7 @@
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	supdate = submodule update --remote --rebase
+	dcl = diff --cached -U10
   
 [filter "media"]
 	required = true
