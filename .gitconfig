@@ -85,3 +85,5 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = merge
+[pull]
+	rebase = true
