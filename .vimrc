@@ -94,6 +94,9 @@ Plug 'ceedubs/sbt-ctags', { 'for' : 'scala' } " ctags with sbt
 "Plug 'luben/sctags'                         " Tags and Etags extractor for Scala
 Plug 'rizzatti/dash.vim', { 'on' : 'Dash' }   " Interface with Dash
 Plug 'johnsyweb/vim-makeshift'              " Set makeprg according to build system
+" {{{ vim-makeshift options
+let g:makeshift_chdir = 1
+" }}}
 Plug 'janko-m/vim-test'                     " Run tests from Vim
 Plug 'mattn/webapi-vim'                     " gist-vim dependency
 Plug 'mattn/gist-vim', { 'on' : 'Gist' }      " Gist from vim
