@@ -112,3 +112,9 @@ JFLAP="/Users/nicolai/Downloads/JFLAP.jar"
 if [ -f "$FJLAP" ]
     alias jflap='java -jar $JFLAP'
 fi
+
+local AUTOENV_PATH
+AUTOENV_PATH="/usr/local/opt/autoenv/activate.sh"
+if [ -f "$AUTOENV_PATH" ]
+    source "$AUTOENV_PATH"
+fi
