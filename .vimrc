@@ -93,12 +93,12 @@ let g:easytags_async=1
 Plug 'ceedubs/sbt-ctags', { 'for' : 'scala' } " ctags with sbt
 "Plug 'luben/sctags'                         " Tags and Etags extractor for Scala
 Plug 'rizzatti/dash.vim', { 'on' : 'Dash' }   " Interface with Dash
-Plug 'johnsyweb/vim-makeshift'              " Set makeprg according to build system
+Plug 'johnsyweb/vim-makeshift'                " Set makeprg according to build system
 " {{{ vim-makeshift options
 let g:makeshift_chdir = 1
 " }}}
-Plug 'janko-m/vim-test'                     " Run tests from Vim
-Plug 'mattn/webapi-vim'                     " gist-vim dependency
+Plug 'janko-m/vim-test'                       " Run tests from Vim
+Plug 'mattn/webapi-vim'                       " gist-vim dependency
 Plug 'mattn/gist-vim', { 'on' : 'Gist' }      " Gist from vim
 " {{{ gist options
 let g:gist_clip_command = 'pbcopy'
@@ -124,10 +124,10 @@ Plug 'junegunn/goyo.vim',        { 'on' : 'Goyo' }   " Zen-mode
 Plug 'junegunn/limelight.vim',   { 'on' : 'Limelight' }
 Plug 'fmoralesc/vim-tutor-mode', { 'on' : 'Tutor' }
 Plug 'joshhartigan/vim-reddit',  { 'on' : 'Reddit' } " Browse reddit
-Plug 'tmux-plugins/vim-tmux'                " Everything for .tmux.conf
-Plug 'tmux-plugins/vim-tmux-focus-events'   " Fixes issues with focus events
-Plug 'tpope/vim-repeat'                     " Enhance the dot-command
-Plug 'tpope/vim-speeddating'                " Work with dates
+Plug 'tmux-plugins/vim-tmux'                         " Everything for .tmux.conf
+Plug 'tmux-plugins/vim-tmux-focus-events'            " Fixes issues with focus events
+Plug 'tpope/vim-repeat'                              " Enhance the dot-command
+Plug 'tpope/vim-speeddating'                         " Work with dates
 Plug 'xolox/vim-misc'
 Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }    " Use w3m in vim
 
@@ -441,10 +441,6 @@ nmap <leader>g :TagbarToggle<CR>
 " autocmd FileType java let b:jcommenter_file_author='Nicolai Skogheim (nicolai.skogheim@gmail.com)'
 " autocmd FileType java source ~/.vim/macros/jcommenter.vim
 " autocmd FileType java map <leader>j :call JCommentWriter()<CR>
-
-
-
-
 
 
 " bats
