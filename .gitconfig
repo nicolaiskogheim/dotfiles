@@ -38,6 +38,7 @@
   # Tag
 	lt = describe --tags --abbrev=0
   # Utility
+    save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
 	done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
   new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
   whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
