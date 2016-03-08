@@ -6,7 +6,8 @@
 	br = branch
 	co = checkout
 	ci = commit
-	cm = commit -m
+    cm = commit -m
+    cam = commit --all -m
   # Diff
 	dc = diff --cached
 	dlc = diff --cached HEAD^
