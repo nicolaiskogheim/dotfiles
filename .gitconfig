@@ -31,7 +31,7 @@
 	done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
   new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
   whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-  whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+  whatis = show --no-patch --pretty='tformat:%h (%s, %ad)' --date=short
   debug = !GIT_PAGER= gdb --args git
   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
   add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
