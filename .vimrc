@@ -434,7 +434,6 @@ nnoremap <leader>R :redraw!<CR>
 " echom ">^.^<" " This should print after Vim has loaded
 iabbr sop System.out.println();<esc>T(i
 iabbr sof System.out.printf("\n");<esc>T(a
-iabbr pro protected
 
 nmap <leader>g :TagbarToggle<CR>
 
