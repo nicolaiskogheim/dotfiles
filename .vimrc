@@ -30,7 +30,7 @@ Plug 'L9'
 
 " Utility
 " Plug 'christoomey/vim-tmux-runner'
-Plug 'Cofyc/vim-uncrustify'
+Plug 'Cofyc/vim-uncrustify', { 'for' : ['c', 'cpp'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
 " {{{ fzf options
@@ -82,35 +82,35 @@ let g:easytags_resolve_links = 1
 let g:easytags_suppress_ctags_warning = 1
 let g:easytags_async=1
 " }}}
-Plug 'ceedubs/sbt-ctags'                    " ctags with sbt
+Plug 'ceedubs/sbt-ctags', { 'for' : 'scala' } " ctags with sbt
 "Plug 'luben/sctags'                         " Tags and Etags extractor for Scala
-Plug 'rizzatti/dash.vim'                    " Interface with Dash
+Plug 'rizzatti/dash.vim', { 'on' : 'Dash' }   " Interface with Dash
 Plug 'tpope/vim-vinegar'                    " Enhanced filebrowser
 Plug 'johnsyweb/vim-makeshift'              " Set makeprg according to build system
 Plug 'janko-m/vim-test'                     " Run tests from Vim
 Plug 'mattn/webapi-vim'                     " gist-vim dependency
-Plug 'mattn/gist-vim'                       " Gist from vim
+Plug 'mattn/gist-vim', { 'on' : 'Gist' }      " Gist from vim
 " {{{ gist options
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_post_private = 1
 " }}}
-Plug 'jamessan/vim-gnupg'                   " Edit encrypted files
+Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }  " Edit encrypted files
 
 " Quickfix parsers
 Plug 'felixge/vim-nodejs-errorformat'
 
 " Miscelaneous
-Plug 'junegunn/goyo.vim'                    " Zen-mode
-Plug 'junegunn/limelight.vim'
-Plug 'fmoralesc/vim-tutor-mode'
-" Plug 'joshhartigan/vim-reddit'              " Browse reddit
+Plug 'junegunn/goyo.vim',        { 'on' : 'Goyo' }   " Zen-mode
+Plug 'junegunn/limelight.vim',   { 'on' : 'Limelight' }
+Plug 'fmoralesc/vim-tutor-mode', { 'on' : 'Tutor' }
+Plug 'joshhartigan/vim-reddit',  { 'on' : 'Reddit' } " Browse reddit
 Plug 'tmux-plugins/vim-tmux'                " Everything for .tmux.conf
 Plug 'tmux-plugins/vim-tmux-focus-events'   " Fixes issues with focus events
 Plug 'tpope/vim-repeat'                     " Enhance the dot-command
 Plug 'tpope/vim-speeddating'                " Work with dates
 Plug 'xolox/vim-misc'
-Plug 'yuratomo/w3m.vim'                     " Use w3m in vim
+Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }    " Use w3m in vim
 
 " Static analysis
 Plug 'scrooloose/syntastic'                 " Syntax checking
@@ -205,10 +205,10 @@ Plug 'nicolaiskogheim/vim-snippets'
 " /end snipmate
 
 " Appearance
-Plug 'sheerun/vim-polyglot'                 " Lanugage packs
-Plug 'vim-jp/vim-java'                      " Java highlighting
-Plug 'amdt/vim-niji'                        " Rainbow parenthesis for Scheme etc.
-Plug 'bling/vim-airline'                    " Statusline
+Plug 'sheerun/vim-polyglot'                             " Lanugage packs
+Plug 'vim-jp/vim-java'           , { 'for' : 'java' }   " Java highlighting
+Plug 'amdt/vim-niji'             , { 'for' : 'scheme' } " Rainbow parenthesis for Scheme etc.
+Plug 'bling/vim-airline'                                " Statusline
 " {{{ airline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled=1
@@ -226,15 +226,15 @@ let g:airline_mode_map = {
   \ '' : 'S',
   \ }
 " }}}
-Plug 'elzr/vim-json'                        " Better JSON
-Plug 'justinmk/vim-syntax-extra'            " Improved C-syntax
-Plug 'edkolev/tmuxline.vim'                 " Tmux status line generator
-Plug 'tfnico/vim-gradle'                    " Gradle highlighting
-Plug 'CheezeCake/vim-gas'                   " Gas highlighting
-Plug 'rust-lang/rust.vim'                   " Rust highlighting
-Plug 'ryanoasis/vim-devicons'               " Integrates with other plugins
-                                            " Must be loaded after plugins
-                                            " using it
+Plug 'elzr/vim-json'             , { 'for' : 'json' }   " Better JSON
+Plug 'justinmk/vim-syntax-extra' , { 'for' : 'C' }      " Improved C-syntax
+Plug 'edkolev/tmuxline.vim'                             " Tmux status line generator
+Plug 'tfnico/vim-gradle'         , { 'for' : 'gradle'}  " Gradle highlighting
+Plug 'CheezeCake/vim-gas'        , { 'for' : 'gas' }    " Gas highlighting
+Plug 'rust-lang/rust.vim'        , { 'for' : 'rust' }   " Rust highlighting
+Plug 'ryanoasis/vim-devicons'                           " Integrates with other plugins
+                                                        " Must be loaded after plugins
+                                                        " using it
 
 " Color schemes
 Plug 'junegunn/seoul256.vim'
