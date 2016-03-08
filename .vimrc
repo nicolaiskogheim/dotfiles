@@ -302,7 +302,6 @@ set diffopt+=vertical
 set encoding=utf-8
 set expandtab
 set foldopen=insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional: block
-set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
