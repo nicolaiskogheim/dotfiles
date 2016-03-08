@@ -13,6 +13,14 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" I plan to check these out:
+" unblevable/quick-scope
+" zef/vim-cycle
+" rstacruz/vim-closer
+" vim-obsession
+" vim-eunuch
+" Olical/vim-enmasse
+
 
 " Developer tools (for Vim)
 Plug 'L9'
