@@ -62,7 +62,7 @@ HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory autocd beep nomatch notify
-#setopt extendedglob 
+#setopt extendedglob  # Make ^,$ and the likes behave as regex-chars
 # End of lines configured by zsh-newuser-install
 
 export KEYTIMEOUT=1
