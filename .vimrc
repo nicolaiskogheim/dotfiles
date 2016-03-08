@@ -307,6 +307,7 @@ set incsearch
 set laststatus=2
 set matchtime=2
 set number
+set shiftround " Don't know if I want this. Leaving it here to not forget.
 set shiftwidth=4
 set showcmd
 set showfulltag " When completing by tag, show the whole tag, not just the function name
