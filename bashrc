@@ -107,15 +107,15 @@ export GVM_DIR="/Users/nicolai/.gvm"
 alias doco='docker-compose'
 alias doma='docker-machine'
 
-local JFLAP
-JFLAP="/Users/nicolai/Downloads/JFLAP.jar"
-if [ -f "$FJLAP" ]
-    alias jflap='java -jar $JFLAP'
+JFLAP_PATH="/Users/nicolai/Downloads/JFLAP.jar"
+if [ -f "$JFLAP_PATH" ]
+then
+    alias jflap='java -jar $JFLAP_PATH'
 fi
 
-local AUTOENV_PATH
 AUTOENV_PATH="/usr/local/opt/autoenv/activate.sh"
 if [ -f "$AUTOENV_PATH" ]
+then
     source "$AUTOENV_PATH"
 fi
 
