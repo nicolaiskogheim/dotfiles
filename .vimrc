@@ -69,7 +69,6 @@ Plug 'junegunn/fzf.vim'
     execute 'Ag' selection
   endfunction
 " }}}
-Plug 'junegunn/vim-github-dashboard'
 Plug 'junegunn/vim-peekaboo'                " Show registers in sidepanel
 Plug 'majutsushi/tagbar'                    " Show tags in sidepanel
 Plug 'tpope/vim-fugitive'                   " Git wrapper
