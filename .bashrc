@@ -96,6 +96,7 @@ export FINDBUGS_HOME=/usr/local/Cellar/findbugs/3.0.1/libexec
 
 if [ "$(uname -s)" = "Darwin" ] ; then
     # Decrease animation duration when using expose
+    # TODO: should only kill Dock if value actually was updated
     defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
 fi
 
