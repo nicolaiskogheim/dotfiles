@@ -414,6 +414,8 @@ autocmd FileType python nnoremap <buffer> <leader>s :w \|:!python %<cr>
 
 autocmd FileType c inoremap <buffer> <C-l> <C-R>="->"<C-M>
 
+autocmd FileType php inoremap <buffer> <C-l> <C-R>="->"<C-M>
+
 nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
 vnoremap <leader>y :w !pbcopy<cr>
 
