@@ -29,7 +29,7 @@ Plug 'L9'
 " Plug 'FredKSchott/CoVim'                  " Shitty plug for collaborating
 
 " Utility
-Plug 'christoomey/vim-tmux-runner'
+" Plug 'christoomey/vim-tmux-runner'
 Plug 'Cofyc/vim-uncrustify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
