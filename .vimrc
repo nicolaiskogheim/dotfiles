@@ -95,6 +95,15 @@ let g:gist_detect_filetype = 1
 let g:gist_post_private = 1
 " }}}
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }  " Edit encrypted files
+Plug 'junegunn/vim-easy-align'                " Align text
+" {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap <leader>ga <Plug>(EasyAlign)
+" }}}
+Plug 'justinmk/vim-dirvish'                   " # Directory viewer
 
 " Quickfix parsers
 Plug 'felixge/vim-nodejs-errorformat'
