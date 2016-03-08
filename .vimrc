@@ -93,7 +93,6 @@ let g:easytags_async=1
 Plug 'ceedubs/sbt-ctags', { 'for' : 'scala' } " ctags with sbt
 "Plug 'luben/sctags'                         " Tags and Etags extractor for Scala
 Plug 'rizzatti/dash.vim', { 'on' : 'Dash' }   " Interface with Dash
-Plug 'tpope/vim-vinegar'                    " Enhanced filebrowser
 Plug 'johnsyweb/vim-makeshift'              " Set makeprg according to build system
 Plug 'janko-m/vim-test'                     " Run tests from Vim
 Plug 'mattn/webapi-vim'                     " gist-vim dependency
