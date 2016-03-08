@@ -31,6 +31,15 @@ Plug 'L9'
 " Utility
 " Plug 'christoomey/vim-tmux-runner'
 Plug 'Cofyc/vim-uncrustify', { 'for' : ['c', 'cpp'] }
+" {{{
+augroup load_uncrustify_mappings
+    autocmd!
+    autocmd FileType c noremap <buffer> <leader>u :call Uncrustify('c')<CR>
+    autocmd FileType c vnoremap <buffer> <leader>u :call RangeUncrustify('c')<CR>
+    autocmd FileType cpp noremap <buffer> <leader>u :call Uncrustify('cpp')<CR>
+    autocmd FileType cpp vnoremap <buffer> <leader>u :call RangeUncrustify('cpp')<CR>
+augroup end
+" }}}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
 " {{{ fzf options
