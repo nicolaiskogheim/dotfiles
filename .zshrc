@@ -16,6 +16,9 @@ autoload -U colors
 colors
 zstyle ':completion:*' show-ambiguity "1;2;$color[fg-red]"
 
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 source ~/.bashrc
 source ~/.zgen.zsh
