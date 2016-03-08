@@ -338,7 +338,7 @@ nnoremap <leader>a :Ack
 nnoremap <leader>ft Vatzf
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>v V`]
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <SPACE>w :w<CR>
 " Conflicting with <leader>q for quicklook and I don't really know what it's good for
 " nnoremap <leader>q gqip
