@@ -459,8 +459,6 @@ endif
 nmap <C-å> <ESC>
 
 
-let g:makeshift_chdir = 1
-
 " Eclim
 " let g:EclimeCompletionMethod = 'omnifunc'
 nmap <leader>ji :JavaImportOrganize<CR>
