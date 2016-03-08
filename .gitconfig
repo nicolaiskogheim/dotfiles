@@ -1,6 +1,7 @@
 [user]
 	name = Nicolai Skogheim
 	email = nicolai.skogheim@gmail.com
+	github = nicolaiskogheim
 [alias]
 	br = branch
 	co = checkout
