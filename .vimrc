@@ -251,6 +251,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug '~/.vim/plugged/lettuce.vim'
 Plug 'NLKNguyen/papercolor-theme'
 " Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -261,8 +262,8 @@ syntax on
 set t_ut=
 set t_Co=256
 let base16colorspace=256
-" colorscheme base16-seti
-colorscheme lettuce
+colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
 set background=dark
 
 
