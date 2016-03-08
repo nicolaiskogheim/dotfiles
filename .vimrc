@@ -375,7 +375,7 @@ map <Left> :tabprevious<CR>
 " I have to do a lot of redrawing
 nnoremap <leader>d :redraw!<CR>
 
-" function to execute current buffer using it's shebang
+" function to execute current buffer using it's shebang {{{
 au BufEnter *
       \ if match (getline(1) , '^\#!') == 0 |
       \ execute("let b:interpreter = getline(1)[2:]") |
@@ -386,7 +386,7 @@ fun! CallInterpreter()
     exec("! ".b:interpreter." %")
   endif
 endfun
-
+" }}}
 map <leader>x :call CallInterpreter()<CR>
 
 " Mappings for saving and running current file
@@ -468,7 +468,7 @@ nmap <leader>ji :JavaImportOrganize<CR>
 let g:limelight_conceal_ctermfg = 240
 
 " Script to easily change working dir to the root of a git project
-function! Git_Repo_Cdup() " Get the relative path to repo root
+function! Git_Repo_Cdup() " Get the relative path to repo root {{{
     "Ask git for the root of the git repo (as a relative '../../' path)
     let git_top = system('git rev-parse --show-cdup')
     let git_fail = 'fatal: Not a git repository'
@@ -480,18 +480,18 @@ function! Git_Repo_Cdup() " Get the relative path to repo root
         " path will be empty, so add './'
         return './' . git_top
     endif
-endfunction
+endfunction " }}}
 
-function! CD_Git_Root()
+function! CD_Git_Root() " {{{
     execute 'cd '.Git_Repo_Cdup()
     let curdir = getcwd()
     echo 'CWD now set to: '.curdir
-endfunction
+endfunction " }}}
 nnoremap <LEADER>gr :call CD_Git_Root()<cr>
 
 
 " Make Wildignore reflect .gitignore
-" Define the wildignore from gitignore. Primarily for CommandT
+" Define the wildignore from gitignore. Primarily for CommandT {{{
 function! WildignoreFromGitignore()
     silent call CD_Git_Root()
     let gitignore = '.gitignore'
@@ -511,7 +511,7 @@ function! WildignoreFromGitignore()
     else
         echo 'Unable to find gitignore'
     endif
-endfunction
+endfunction " }}}
 nnoremap <LEADER>cti :call WildignoreFromGitignore()<cr>
 nnoremap <LEADER>cwi :set wildignore=''<cr>:echo 'Wildignore cleared'<cr>
 
