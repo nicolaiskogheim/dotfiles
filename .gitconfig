@@ -3,11 +3,17 @@
 	email = nicolai.skogheim@gmail.com
 	github = nicolaiskogheim
 [alias]
-	br = branch
 	co = checkout
 	ci = commit
     cm = commit -m
     cam = commit --all -m
+
+  # Branch
+    br = branch
+    bm = branch --merged
+    bd = branch -d
+    bD = branch -D
+
   # Diff
 	dc = diff --cached
 	dlc = diff --cached HEAD^
