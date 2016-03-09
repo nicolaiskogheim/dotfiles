@@ -1,0 +1,5 @@
+## This file is only for ignoring special files in this repo (dotfiles),
+## and serves no purpose outside.
+
+assets/*
+!assets/.gitkeep
