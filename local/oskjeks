@@ -1,0 +1,122 @@
+#!/bin/sh
+
+# Here goes:
+# - path variables
+# - local aliases
+
+################################################
+##                 ALIASES                    ##
+################################################
+
+alias doco='docker-compose'
+alias doma='docker-machine'
+alias emacs="cowthink Noonononono. Nope."
+alias gpg="gpg2"
+alias i=ionic
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias jk="cowsay -e ^^ -T U Just Kiddin\'"
+alias stripcolors='gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
+alias tks="tmux kill-session"
+alias trash=rmtrash
+
+# Elimd server
+alias eclimd="/Applications/Eclipse.app/Contents/Eclipse/eclimd"
+
+# GUI for automata
+JFLAP_PATH="/Users/nicolai/Downloads/JFLAP.jar"
+# shellcheck disable=SC2139
+alias jflap="java -jar $JFLAP_PATH"
+
+################################################
+##                  CONFIG                    ##
+################################################
+
+# Brew
+if command -v brew >/dev/null 2>&1 ; then
+    ## Brew completion
+    source /usr/local/etc/bash_completion.d/*
+    ## To use GNU-utilities
+    PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+    MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+    PATH="$(brew --prefix)/sbin:$PATH"
+fi
+
+# Dinghy
+export DOCKER_HOST=tcp://192.168.99.100:2376
+export DOCKER_CERT_PATH=/Users/nicolai/.docker/machine/machines/dinghy
+export DOCKER_TLS_VERIFY=1
+export DOCKER_MACHINE_NAME=dinghy
+
+# FZF
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+#Git stuff
+export GIT_PROMPT_ONLY_IN_REPO=1
+#GIT_PROMPT_SHOW_LAST_COMMAND_INDICATOR=1
+
+# GVM
+
+# wrap this in function so I can call it at the bottom of the file
+gvm_init() {
+    #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+    export GVM_DIR="/Users/nicolai/.gvm"
+    [[ -s "$GVM_DIR/bin/gvm-init.sh" ]] && source "$GVM_DIR/bin/gvm-init.sh"
+}
+
+# OSX
+if [ "$(uname -s)" = "Darwin" ] ; then
+    # Decrease animation duration when using expose
+    # TODO: should only kill Dock if value actually was updated
+    defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
+fi
+
+
+################################################
+##                  PATHS                     ##
+################################################
+
+# Android SDK
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+export PATH="$PATH:$HOME/Library/Android/sdk/tools"
+
+AUTOENV_PATH="/usr/local/opt/autoenv/activate.sh"
+test -f "$AUTOENV_PATH" && source "/usr/local/opt/autoenv/activate.sh"
+
+# Findbugs
+export FINDBUGS_HOME=/usr/local/Cellar/findbugs/3.0.1/libexec
+
+# Go
+export GOPATH=$HOME/go
+# export GOROOT=/usr/local/go
+# export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+
+# Java
+export JUNIT_HOME="$HOME/java"
+export PATH="$PATH:$JUNIT_HOME"
+export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-core-1.3.jar"
+
+# openvpn
+PATH="$PATH:/usr/local/Cellar/openvpn/2.3.6/sbin"
+
+# quicklook
+ql() {
+  qlmanage -p "$1" 1>2 2>/dev/null
+}
+
+################################################
+##            OWN BINARIES AND STUFF          ##
+################################################
+
+# Have this last to make sure my own bins are searched first
+# PATH="$HOME/bin:$HOME/bin/git-radar:$PATH"
+
+# # shellcheck disable=SC1091
+# # shellcheck source=/Users/nicolai/bin/getKeyboardLayout.sh
+# source "$HOME/bin/getKeyboardLayout.sh"
+
+
+# See definition further up, for explanation
+gvm_init

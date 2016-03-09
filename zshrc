@@ -1,4 +1,7 @@
-# The following lines were added by compinstall
+
+[ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] && source "$HOME/dotfiles/shell_agnostic_rc.inc"
+
+#The following lines were added by compinstall
 zstyle :compinstall filename '/Users/nicolai/.zshrc'
 
 autoload -Uz compinit
@@ -20,9 +23,12 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-source ~/.bashrc
-source ~/.zgen.zsh
+[ -f "$HOME/dotfiles/local/$(hostname)" ] && source "$HOME/dotfiles/local/$(hostname)"
 
+# TODO: auto download zgen
+[ -f "$HOME/dotfiles/assets/zgen.zsh" ] && source "$HOME/dotfiles/assets/zgen.zsh"
+
+# TODO: auto download fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
@@ -52,19 +58,9 @@ alias fuck='$(thefuck $(fc -ln -1))'
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
 
-function mc() {
-  mkdir -p "$*" && cd "$*"
-}
-
-
 # Base16 Shell
 BASE16_SHELL="${HOME}/.base16-seti.dark.sh"
 [[ -e "$BASE16_SHELL" ]] && source $BASE16_SHELL
-alias ="echo omnomnom"
-
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-export GVM_DIR="/Users/nicolai/.gvm"
-[[ -s "/Users/nicolai/.gvm/bin/gvm-init.sh" ]] && source "/Users/nicolai/.gvm/bin/gvm-init.sh"
 
 # psql -h dbpg-ifi-kurs -U nicolai
 

@@ -1,125 +1,22 @@
 #!/usr/bin/env bash
-#Git stuff
-export GIT_PROMPT_ONLY_IN_REPO=1
-#GIT_PROMPT_SHOW_LAST_COMMAND_INDICATOR=1
 
-trim() {
-  local s2 s="$*"
-  # note the tab character in the expressions of the following two lines when copying
-  until s2="${s#[   ]}"; [ "$s2" = "$s" ]; do s="$s2"; done
-  until s2="${s%[   ]}"; [ "$s2" = "$s" ]; do s="$s2"; done
-  echo "$s"
-}
+[ -f "/Users/nicolai/dotfiles/shell_agnostic_rc.inc" ] \
+    && source "$HOME/dotfiles/shell_agnostic_rc.inc"
 
-# This isn't working
-if [ "$0" = "bash" ]; then
-  if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
+[ -f "$HOME/dotfiles/local/$(hostname)" ] \
+    && source "$HOME/dotfiles/local/$(hostname)"
+
+[ -f ~/.bash-git-prompt/gitprompt.sh ] && \
     source ~/.bash-git-prompt/gitprompt.sh
-  fi
 
-  if [ -f ~/.git-completion.bash ]; then
+[ -f ~/.git-completion.bash ] && \
     source ~/.git-completion.bash
-  fi
-fi
 
-# Go
-export GOPATH=$HOME/go
-# export GOROOT=/usr/local/go
-# export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+[ -f ~/.fzf.bash ] \
+    && source ~/.fzf.bash
+
+[ -f ~/.someconflicts.sh ] && \
+    source ~/.someconflicts.sh
 
 # User defined completion
 # source /etc/bash_completion.d/* # No, please no.
-
-
-if command -v brew >/dev/null 2>&1 ; then
-    ## Brew completion
-    source /usr/local/etc/bash_completion.d/*
-
-    ## To use GNU-utilities
-
-    PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-    MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
-    PATH="$(brew --prefix)/sbin:$PATH"
-fi
-
-# java
-export JUNIT_HOME="$HOME/java"
-export PATH="$PATH:$JUNIT_HOME"
-export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-core-1.3.jar"
-
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-
-alias gpg="gpg2"
-export EDITOR=vim
-
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export TERM="xterm-256color"
-alias trash=rmtrash
-
-# Android SDK
-export PATH="$PATH:/Users/nicolai/Library/Android/sdk/platform-tools:/Users/nicolai/Library/Android/sdk/tools"
-alias i=ionic
-
-# openvpn
-PATH="$PATH:/usr/local/Cellar/openvpn/2.3.6/sbin"
-
-
-if [ -f ~/.someconflicts.sh ] ; then
-    source ~/.someconflicts.sh
-fi
-
-export HISTCONTROL=ignorespace
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# Elimd server
-alias eclimd="/Applications/Eclipse.app/Contents/Eclipse/eclimd"
-alias cal='cal | grep -C100 --color=always "\b$(trim $(date +%e))\b"'
-
-# # shellcheck disable=SC1091
-# # shellcheck source=/Users/nicolai/bin/getKeyboardLayout.sh
-# source "$HOME/bin/getKeyboardLayout.sh"
-
-#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
-stty -ixon
-
-export FINDBUGS_HOME=/usr/local/Cellar/findbugs/3.0.1/libexec
-
-
-# Have this last to make sure my own bins are searched first
-# PATH="$HOME/bin:$HOME/bin/git-radar:$PATH"
-
-if [ "$(uname -s)" = "Darwin" ] ; then
-    # Decrease animation duration when using expose
-    # TODO: should only kill Dock if value actually was updated
-    defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
-fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-export GVM_DIR="/Users/nicolai/.gvm"
-[[ -s "/Users/nicolai/.gvm/bin/gvm-init.sh" ]] && source "/Users/nicolai/.gvm/bin/gvm-init.sh"
-
-alias doco='docker-compose'
-alias doma='docker-machine'
-
-JFLAP_PATH="/Users/nicolai/Downloads/JFLAP.jar"
-if [ -f "$JFLAP_PATH" ]
-then
-    alias jflap='java -jar $JFLAP_PATH'
-fi
-
-AUTOENV_PATH="/usr/local/opt/autoenv/activate.sh"
-if [ -f "$AUTOENV_PATH" ]
-then
-    source "$AUTOENV_PATH"
-fi
-
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=/Users/nicolai/.docker/machine/machines/dinghy
-export DOCKER_TLS_VERIFY=1
-export DOCKER_MACHINE_NAME=dinghy
