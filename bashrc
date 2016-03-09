@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[ -f "/Users/nicolai/dotfiles/shell_agnostic_rc.inc" ] \
+[ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] \
     && source "$HOME/dotfiles/shell_agnostic_rc.inc"
 
 [ -f "$HOME/dotfiles/local/$(hostname)" ] \
