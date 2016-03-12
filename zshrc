@@ -91,6 +91,7 @@ if ! zgen saved; then
   #zgen load command-not-found
   #zgen load autoenv
   zgen oh-my-zsh plugins/gradle
+  zgen oh-my-zsh plugins/archlinux
 
   zgen load Lokaltog/powerline
   zgen oh-my-zsh plugins/colored-man-pages
