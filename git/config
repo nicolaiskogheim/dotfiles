@@ -96,7 +96,7 @@
     smudge = git lfs smudge %f
     required = true
 [commit]
-    template = /Users/nicolai/.gitmessage
+    template = ~/.gitmessage
 [merge]
     tool = vimdiff
     conflictstyle = merge
