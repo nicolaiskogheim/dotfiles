@@ -7,4 +7,6 @@ export VISUAL=vim
 
 # alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
+AUTOENV_PATH="/usr/share/autoenv-git/activate.sh"
+test -f "$AUTOENV_PATH" && source "$AUTOENV_PATH"
 
