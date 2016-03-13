@@ -80,7 +80,7 @@ export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 export PATH="$PATH:$HOME/Library/Android/sdk/tools"
 
 AUTOENV_PATH="/usr/local/opt/autoenv/activate.sh"
-test -f "$AUTOENV_PATH" && source "/usr/local/opt/autoenv/activate.sh"
+test -f "$AUTOENV_PATH" && source "$AUTOENV_PATH"
 
 # Findbugs
 export FINDBUGS_HOME=/usr/local/Cellar/findbugs/3.0.1/libexec
