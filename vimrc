@@ -81,6 +81,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'                " Show registers in sidepanel
 Plug 'majutsushi/tagbar'                    " Show tags in sidepanel
 Plug 'tpope/vim-fugitive'                   " Git wrapper
+" {{{
+set diffopt+=vertical
+" }}}
 Plug 'xolox/vim-easytags'                   " ctags for vim, ala Go-to-definition
 " {{{ easytags options
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
