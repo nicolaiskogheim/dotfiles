@@ -411,25 +411,35 @@ endfun
 map <leader>x :call CallInterpreter()<CR>
 
 " Mappings for saving and running current file
+augroup autocommands
+    au!
+    autocmd FileType prolog noremap <buffer> <leader>s :w\|:!swipl -s %<cr>
+    autocmd FileType prolog inoremap <buffer> <C-l> <C-R>=":-"<C-M>
 
-autocmd FileType prolog noremap <buffer> <leader>s :w\|:!swipl -s %<cr>
-autocmd FileType prolog inoremap <buffer> <C-l> <C-R>=":-"<C-M>
+    autocmd FileType scheme xnoremap <buffer> <leader>r :w !guile<cr>
+    autocmd FileType scheme nnoremap <buffer> <leader>s :%w !guile<cr>
 
-autocmd FileType scheme xnoremap <buffer> <leader>r :w !guile<cr>
-autocmd FileType scheme nnoremap <buffer> <leader>s :%w !guile<cr>
+    autocmd FileType java nnoremap <buffer> <leader>s :w \|:!javac %<cr>
 
-autocmd FileType java nnoremap <buffer> <leader>s :w \|:!javac %<cr>
+    autocmd FileType python nnoremap <buffer> <leader>s :w \|:!python %<cr>
 
-autocmd FileType python nnoremap <buffer> <leader>s :w \|:!python %<cr>
+    autocmd FileType c inoremap <buffer> <C-l> <C-R>="->"<C-M>
 
-autocmd FileType c inoremap <buffer> <C-l> <C-R>="->"<C-M>
+    autocmd FileType php inoremap <buffer> <C-l> <C-R>="->"<C-M>
 
-autocmd FileType php inoremap <buffer> <C-l> <C-R>="->"<C-M>
+
+    " bats
+    autocmd BufRead,BufNewFile *.bats        set filetype=sh
+    " markdown
+    autocmd BufNewFile,BufReadPost *.md      set filetype=markdown
+
+    autocmd! bufwritepost .vimrc source %
+
+augroup END
 
 nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
 vnoremap <leader>y :w !pbcopy<cr>
 
-autocmd! bufwritepost .vimrc source %
 
 nnoremap <leader>R :redraw!<CR>
 " nnoremap <SPACE>w :w<CR> " I don't like to wait for space to do its thing
@@ -452,11 +462,6 @@ nmap <leader>g :TagbarToggle<CR>
 " autocmd FileType java source ~/.vim/macros/jcommenter.vim
 " autocmd FileType java map <leader>j :call JCommentWriter()<CR>
 
-
-" bats
-autocmd BufRead,BufNewFile *.bats        set filetype=sh
-" markdown
-autocmd BufNewFile,BufReadPost *.md      set filetype=markdown
 
 nnoremap gs :w<CR>
 
