@@ -384,7 +384,7 @@ set wildignore+=*.dSYM
 set wildignore+=build
 " }}}
 
-set modelines=1
+set modelines=2
 
 " Folding
 nnoremap <leader>f zfip
