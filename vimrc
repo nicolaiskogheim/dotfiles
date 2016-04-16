@@ -193,7 +193,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/a.vim'
 Plug 'wellle/targets.vim'
-Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'AndrewRadev/splitjoin.vim'
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'
