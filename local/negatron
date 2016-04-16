@@ -5,8 +5,38 @@
 # yaourt wants to know my editor
 export VISUAL=vim
 
+# Kubernetes version to run (I don't know if this is needed
+# other than with the tutorial I'm taking on http://kubernetes.io/docs/getting-started-guides/docker/)
+export K8S_VERSION="1.2.1"
+
 # alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
 AUTOENV_PATH="/usr/share/autoenv-git/activate.sh"
 test -f "$AUTOENV_PATH" && source "$AUTOENV_PATH"
 
+xmod="xmodmap .config/xmodmap/config"
+
+alias us="setxkbmap us; $xmod"
+alias no="setxkbmap no; $xmod"
+
+## PERL ##
+PATH="/home/nicolai/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/home/nicolai/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/nicolai/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/nicolai/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/nicolai/perl5"; export PERL_MM_OPT;
+
+function torrent {
+	P=$(pwd)
+	cd ~/Downloads/Torrent/.watch
+	curl -O -J -L $@
+	cd $P
+}
+
+function magnet {
+    P=$(pwd)
+	cd ~/Downloads/Torrent/.watch
+    [[ "$1" =~ xt=urn:btih:([\^\&/]+) ]] || exit;
+    echo "d10:magnet-uri${#1}:${1}e" > "meta-${BASH_REMATCH[1]}.torrent"
+    cd $P
+}
