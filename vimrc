@@ -120,6 +120,10 @@ xmap ga <Plug>(EasyAlign)
 nmap <leader>ga <Plug>(EasyAlign)
 " }}}
 Plug 'justinmk/vim-dirvish'                   " # Directory viewer
+Plug 'mattn/emmet-vim', { 'for' : ['html','blade', 'php'] } " Speed editing html
+" {{{
+let g:user_emmet_leader_key='<C-e>'
+" }}}
 
 " Quickfix parsers
 Plug 'felixge/vim-nodejs-errorformat', { 'for' : 'js' }
