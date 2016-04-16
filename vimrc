@@ -260,6 +260,7 @@ Plug 'edkolev/tmuxline.vim'                             " Tmux status line gener
 Plug 'tfnico/vim-gradle'         , { 'for' : 'gradle'}  " Gradle highlighting
 Plug 'CheezeCake/vim-gas'        , { 'for' : 'gas' }    " Gas highlighting
 Plug 'rust-lang/rust.vim'        , { 'for' : 'rust' }   " Rust highlighting
+Plug 'jwalton512/vim-blade'      , { 'for' : 'blade' }  " Blade highlighting
 Plug 'ryanoasis/vim-devicons'                           " Integrates with other plugins
                                                         " Must be loaded after plugins
                                                         " using it
