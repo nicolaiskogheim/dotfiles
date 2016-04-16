@@ -3,6 +3,11 @@ set nocompatible
 set viminfo='100,n$HOME/.vim/files/info/viminfo " yes, no trailing '
 let maplocalleader = "\<space>"
 
+let os = substitute(system('uname'), "\n", "", "")
+if os == "Linux"
+    set clipboard^=unnamed
+endif
+
 " Autoinstall vim-plug {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
