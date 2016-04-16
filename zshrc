@@ -98,6 +98,7 @@ if ! zgen saved; then
   zgen load chrissicool/zsh-256color
   # zgen oh-my-zsh themes/robbyrussell
   zgen load nicolaiskogheim/prompt prompt
+  zgen load noh4ck/zenv
 
   # Must be after plugins and compinit
   zgen load zsh-users/zsh-syntax-highlighting
