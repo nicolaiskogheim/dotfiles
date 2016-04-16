@@ -102,7 +102,7 @@ Plug 'johnsyweb/vim-makeshift'                " Set makeprg according to build s
 " {{{ vim-makeshift options
 let g:makeshift_chdir = 1
 " }}}
-Plug 'janko-m/vim-test'                       " Run tests from Vim
+" Plug 'janko-m/vim-test'                       " Run tests from Vim
 Plug 'mattn/webapi-vim'                       " gist-vim dependency
 Plug 'mattn/gist-vim', { 'on' : 'Gist' }      " Gist from vim
 " {{{ gist options
