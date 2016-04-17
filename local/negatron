@@ -14,7 +14,7 @@ export K8S_VERSION="1.2.1"
 AUTOENV_PATH="/usr/share/autoenv-git/activate.sh"
 test -f "$AUTOENV_PATH" && source "$AUTOENV_PATH"
 
-xmod="xmodmap .config/xmodmap/config"
+xmod="xmodmap $HOME/.config/xmodmap/config"
 
 alias us="setxkbmap us; $xmod"
 alias no="setxkbmap no; $xmod"
