@@ -444,6 +444,9 @@ augroup autocommands
 
     autocmd FileType php inoremap <buffer> <C-l> <C-R>="->"<C-M>
 
+    autocmd FileType haskell inoremap <buffer> <C-l> <C-R>="->"<C-M>
+    autocmd FileType haskell nnoremap <buffer> <leader>s :w \|:!runhaskell %<cr>
+
 
     " bats
     autocmd BufRead,BufNewFile *.bats        set filetype=sh
