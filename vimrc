@@ -354,12 +354,23 @@ set timeout timeoutlen=200 ttimeoutlen=200
 " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set backspace=2
 
+function! <SID>StripTrailingWhitespace() " {{{
+    let l:_s=@/
+    let l:l = line('.')
+    let l:c = col('.')
+	" vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+    %s/\s\+$//e
+	" vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
+    let @/=l:_s
+    call cursor(l:l, l:c)
+endfunction " }}}
+
 nnoremap <leader><space> :noh<cr>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <silent> <leader>W :call <SID>StripTrailingWhitespace()<CR>
 nnoremap <leader>a :Ack
 " This one is conflicting somewhat with <leader>f
 nnoremap <leader>ft Vatzf
