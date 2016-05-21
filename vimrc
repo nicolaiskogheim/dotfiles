@@ -25,7 +25,8 @@ call plug#begin('~/.vim/plugged')
 " vim-obsession
 " vim-eunuch
 " Olical/vim-enmasse
-
+" http://www.stephendiehl.com/posts/vim_2016.html  << haskell in vim 2016
+" https://github.com/begriffs/haskell-vim-now
 
 " Developer tools (for Vim)
 Plug 'L9'
