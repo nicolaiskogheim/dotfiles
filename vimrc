@@ -558,10 +558,10 @@ nnoremap <LEADER>cwi :set wildignore=''<cr>:echo 'Wildignore cleared'<cr>
 
 nnoremap <localleader>m :set foldmethod=marker<CR>
 
-if executable('keyboard-leds')
+if executable('keyboard-leds') " {{{
 	augroup keyboard_leds
 		autocmd!
 		au InsertEnter * let _caps=system('keyboard-leds -c1')
 		au InsertLeave * let _caps=system('keyboard-leds -c0')
 	augroup END
-endif
+endif " }}}
