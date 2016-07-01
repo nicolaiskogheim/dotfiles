@@ -25,6 +25,9 @@
     dr  = "!f() { git diff "$1"^.."$1"; }; f"
     lc  = "!f() { git ll "$1"^.."$1"; }; f"
 
+  # Github
+    fpr = "!sh -c 'nr=\"$1\" ; shift ; git fetch upstream refs/pull/$nr/head:pr-$nr \"$@\"' -"
+
   # Log
     la = log --all --graph --decorate --oneline
     le = log --oneline --decorate
