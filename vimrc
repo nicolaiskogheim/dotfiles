@@ -442,6 +442,7 @@ augroup autocommands
     autocmd FileType python nnoremap <buffer> <leader>s :w \|:!python %<cr>
 
     autocmd FileType c inoremap <buffer> <C-l> <C-R>="->"<C-M>
+    autocmd FileType cpp inoremap <buffer> <C-l> <C-R>="->"<C-M>
 
     autocmd FileType php inoremap <buffer> <C-l> <C-R>="->"<C-M>
 
