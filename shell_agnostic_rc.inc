@@ -19,7 +19,7 @@ trim() {
   echo "$s"
 }
 
-which cal 2>&1 1>/dev/null && \
+which cal 1>/dev/null 2>&1 && \
     alias cal='cal | grep -C100 --color=always "\b$(trim $(date +%e))\b"'
 
 mc() {
