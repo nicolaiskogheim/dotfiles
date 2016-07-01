@@ -267,6 +267,7 @@ Plug 'tfnico/vim-gradle'         , { 'for' : 'gradle'}  " Gradle highlighting
 Plug 'CheezeCake/vim-gas'        , { 'for' : 'gas' }    " Gas highlighting
 Plug 'rust-lang/rust.vim'        , { 'for' : 'rust' }   " Rust highlighting
 Plug 'jwalton512/vim-blade'      , { 'for' : 'blade' }  " Blade highlighting
+Plug 'vim-scripts/SDL-library-syntax-for-C'
 Plug 'ryanoasis/vim-devicons'                           " Integrates with other plugins
                                                         " Must be loaded after plugins
                                                         " using it
