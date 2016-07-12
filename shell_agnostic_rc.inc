@@ -3,7 +3,10 @@
 
 alias ="echo omnomnom"
 
-#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+#  So as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+#  The default (legacy) behaviour of Ctrl-S is to stop
+#+ terminal output; Ctrl-Q continues output.
+#  I use Ctrl-S to navigate left in tmux and vim.
 stty -ixon
 
 export EDITOR=vim
