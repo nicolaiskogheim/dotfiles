@@ -223,10 +223,11 @@ let g:startify_bookmarks = [ { 'v': '~/.vimrc' },
                             \{ 'z': '~/.zshrc' },
                             \{ 't': '~/.tmux.conf' },
                             \{ 'g': '~/.gitconfig' },
-                            \{ 'c': '~/.ssh/config' }
+                            \{ 'c': '~/.ssh/config' },
+                            \{ 'o': '~/dotfiles/local/oskjeks' }
                             \]
 
-let g:startify_custom_indices = ['r', 'u', 'o', 'n', 'm', 'aa', 'af', 'ad', 'ag', 'aj', 'al', 'ak', 'da', 'df', 'dd', 'dg', 'dj', 'dl', 'dk', 'lf', 'ld', 'lg', 'lj', 'lh', 'll', 'lk', 'la', 'oa', 'of', 'od', 'og', 'oj', 'ol', 'ok']
+let g:startify_custom_indices = ['r', 'u', 'n', 'm', 'aa', 'af', 'ad', 'ag', 'aj', 'al', 'ak', 'da', 'df', 'dd', 'dg', 'dj', 'dl', 'dk', 'lf', 'ld', 'lg', 'lj', 'lh', 'll', 'lk', 'la', 'oa', 'of', 'od', 'og', 'oj', 'ol', 'ok']
 
 " TODO: Uncomment below line when has a proper patched font
 " let g:startify_custom_entry_display = "\" (\" . WebDevIconsGetFileTypeSymbol(entry_path) . \") \" . repeat(' ', (3 - strlen(index))) . entry_path"
