@@ -43,3 +43,12 @@ mc() {
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+
+################################################
+##               TOOL CONFIG                  ##
+################################################
+
+# I don't want cows :(
+# http://docs.ansible.com/ansible/intro_configuration.html#nocows
+export ANSIBLE_NOCOWS=1
