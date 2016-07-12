@@ -105,6 +105,9 @@ export JUNIT_HOME="$HOME/java"
 PATH="$PATH:$JUNIT_HOME"
 export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-core-1.3.jar"
 
+# PHP
+PATH="$HOME/.composer/vendor/bin:$PATH"
+
 # openvpn
 PATH="$PATH:/usr/local/Cellar/openvpn/2.3.6/sbin"
 
