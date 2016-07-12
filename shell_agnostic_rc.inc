@@ -27,8 +27,12 @@ trim() {
 which cal 1>/dev/null 2>&1 && \
     alias cal='cal | grep -C100 --color=always "\b$(trim $(date +%e))\b"'
 
+#  Create a directory and cd into it
+#  NOTE: It only makes sense to use this
+#+ with one argument. Thus whatever string
+#+ is used will be the name of the directory
 mc() {
-    mkdir -p "$*" && cd "$*"
+    mkdir -p "$*" && cd "$*" || exit
 }
 
 
