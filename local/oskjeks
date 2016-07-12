@@ -66,8 +66,12 @@ gvm_init() {
 # OSX
 if [ "$(uname -s)" = "Darwin" ] ; then
     # Decrease animation duration when using expose
-    # TODO: should only kill Dock if value actually was updated
-    defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
+    wanted_duration="0.2"
+    current_duration="$(defaults read com.apple.dock expose-animation-duration)"
+
+    if [ "$current_duration" != "$wanted_duration" ] ; then
+        defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
+    fi
 fi
 
 
