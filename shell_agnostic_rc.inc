@@ -10,6 +10,8 @@ alias ="echo omnomnom"
 stty -ixon
 
 export EDITOR=vim
+# Arch uses VISUAL instead of EDITOR
+export VISUAL=vim
 export HISTCONTROL=ignorespace
 export TERM="xterm-256color"
 
