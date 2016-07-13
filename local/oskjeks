@@ -19,6 +19,13 @@ alias stripcolors='gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 alias tks="tmux kill-session"
 alias trash=rmtrash
 
+# It's effing impossible to know what tags are available
+# on container images hosted on gcr.io, so here's an alias
+gcr() {
+  curl -k -s -X GET "https://gcr.io/v2/google_containers/$1/tags/list" \
+  | jq -r '.tags[]'
+}
+
 # Elimd server
 alias eclimd="/Applications/Eclipse.app/Contents/Eclipse/eclimd"
 
