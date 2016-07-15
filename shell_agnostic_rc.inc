@@ -52,3 +52,13 @@ export LANGUAGE=en_US.UTF-8
 # I don't want cows :(
 # http://docs.ansible.com/ansible/intro_configuration.html#nocows
 export ANSIBLE_NOCOWS=1
+
+################################################
+##              LOCAL CONFIG                  ##
+################################################
+
+LOCAL_CONFIG_PATH="$HOME/dotfiles/local/$(hostname)"
+if [ -f "$LOCAL_CONFIG_PATH" ]
+then
+    source "$LOCAL_CONFIG_PATH"
+fi

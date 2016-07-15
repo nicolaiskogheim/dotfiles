@@ -3,9 +3,6 @@
 [ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] \
     && source "$HOME/dotfiles/shell_agnostic_rc.inc"
 
-[ -f "$HOME/dotfiles/local/$(hostname)" ] \
-    && source "$HOME/dotfiles/local/$(hostname)"
-
 [ -f ~/.bash-git-prompt/gitprompt.sh ] && \
     source ~/.bash-git-prompt/gitprompt.sh
 

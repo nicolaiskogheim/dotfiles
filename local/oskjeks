@@ -38,6 +38,8 @@ alias jflap="java -jar $JFLAP_PATH"
 ##                  CONFIG                    ##
 ################################################
 
+export PATH
+
 # Brew
 if command -v brew >/dev/null 2>&1 ; then
     ## Brew completion
@@ -87,8 +89,8 @@ fi
 ################################################
 
 # Android SDK
-export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
-export PATH="$PATH:$HOME/Library/Android/sdk/tools"
+PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+PATH="$PATH:$HOME/Library/Android/sdk/tools"
 
 AUTOENV_PATH="/usr/local/opt/autoenv/activate.sh"
 test -f "$AUTOENV_PATH" && source "$AUTOENV_PATH"
@@ -99,7 +101,7 @@ export FINDBUGS_HOME=/usr/local/Cellar/findbugs/3.0.1/libexec
 # Go
 export GOPATH=$HOME/go
 # export GOROOT=/usr/local/go
-# export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+# PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:/usr/local/opt/go/libexec/bin
 

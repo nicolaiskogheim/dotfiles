@@ -1,6 +1,3 @@
-
-[ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] && source "$HOME/dotfiles/shell_agnostic_rc.inc"
-
 #The following lines were added by compinstall
 zstyle :compinstall filename '/Users/nicolai/.zshrc'
 
@@ -23,7 +20,8 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-[ -f "$HOME/dotfiles/local/$(hostname)" ] && source "$HOME/dotfiles/local/$(hostname)"
+# This file depends on bashcompinit for bash completion
+[ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] && source "$HOME/dotfiles/shell_agnostic_rc.inc"
 
 # TODO: auto download zgen
 [ -f "$HOME/dotfiles/assets/zgen.zsh" ] && source "$HOME/dotfiles/assets/zgen.zsh"
