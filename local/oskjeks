@@ -125,7 +125,8 @@ ql() {
   qlmanage -p "$1" 1>2 2>/dev/null
 }
 
-export PATH
+# m-cli: https://github.com/rgcr/m-cli
+PATH="$PATH:/usr/local/m-cli"
 
 ################################################
 ##            OWN BINARIES AND STUFF          ##
