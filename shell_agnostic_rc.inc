@@ -2,6 +2,16 @@
 # vim:ft=sh
 
 alias ="echo omnomnom"
+alias mkdrit=mkdir
+alias nah='git reset --hard && git clean -df'
+
+alias such=git
+alias very=git
+alias wow='git status'
+# $ wow
+# $ such commit
+# $ very push
+# sorrynotsorry
 
 #  So as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 #  The default (legacy) behaviour of Ctrl-S is to stop
