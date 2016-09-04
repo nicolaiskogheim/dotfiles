@@ -7,6 +7,7 @@
     co = checkout
     ci = commit
     cm = commit -m
+    ca = commit --amend
     cam = commit --all -m
 
   # Branch
