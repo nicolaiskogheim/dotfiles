@@ -58,7 +58,6 @@
     edit = !vim `git ls-files -m` -p # -p = Open one tab per file
     ed = !vim `git ls-files --other --exclude-standard`
 
-
   # Submodule
     sinit = submodule init
     sdiff = !git diff && git submodule foreach 'git diff'
@@ -106,3 +105,5 @@
     conflictstyle = diff3
 [pull]
     rebase = true
+[submodule]
+	fetchJobs = 4
