@@ -9,6 +9,9 @@
 [ -f ~/.git-completion.bash ] && \
     source ~/.git-completion.bash
 
+[ -f ~/dotfiles/assets/docker-machine-prompt.bash ] && \
+    source ~/dotfiles/assets/docker-machine-prompt.bash
+
 [ -f ~/.fzf.bash ] \
     && source ~/.fzf.bash
 
