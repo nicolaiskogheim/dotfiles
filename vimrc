@@ -128,9 +128,38 @@ xmap ga <Plug>(EasyAlign)
 nmap <leader>ga <Plug>(EasyAlign)
 " }}}
 Plug 'justinmk/vim-dirvish'                   " # Directory viewer
-Plug 'mattn/emmet-vim', { 'for' : ['html','blade', 'php'] } " Speed editing html
+Plug 'mattn/emmet-vim', { 'for' : ['html', 'elm', 'blade', 'php'] } " Speed editing html
 " {{{
 let g:user_emmet_leader_key='<C-e>'
+" }}}
+Plug 'fatih/vim-go', { 'for' : ['go'] } " For Go development
+" {{{
+let g:go_fmt_command = "goimports"
+" }}}
+Plug 'jodosha/vim-godebug', { 'for' : ['go'] } " Interface to Go debugger
+Plug 'elmcast/elm-vim'
+" {{{
+let g:elm_format_autosave = 1
+let g:elm_setup_keybindings = 0
+let g:elm_syntastic_show_warnings = 1
+
+" Below are some available options. The values does not necessarily represent
+" the default value.
+
+" let g:elm_jump_to_error = 0
+" let g:elm_make_output_file = "elm.js"
+" let g:elm_make_show_warnings = 0
+" let g:elm_syntastic_show_warnings = 0
+" let g:elm_browser_command = ""
+" let g:elm_detailed_complete = 0
+" let g:elm_format_autosave = 0
+" let g:elm_format_fail_silently = 0
+" let g:elm_setup_keybindings = 1
+" }}}
+Plug 'https://github.com/rhysd/vim-go-impl', { 'for' : ['go'] }
+Plug 'rust-lang/rust.vim', { 'for' : ['rust'] }
+" {{{
+let g:rustfmt_autosave = 1
 " }}}
 
 " Quickfix parsers
@@ -139,6 +168,9 @@ Plug 'felixge/vim-nodejs-errorformat', { 'for' : 'js' }
 " Miscelaneous
 Plug 'junegunn/goyo.vim',        { 'on' : 'Goyo' }   " Zen-mode
 Plug 'junegunn/limelight.vim',   { 'on' : 'Limelight' }
+" {{{
+let g:limelight_conceal_ctermfg = 240
+" }}}
 Plug 'fmoralesc/vim-tutor-mode', { 'on' : 'Tutor' }
 Plug 'joshhartigan/vim-reddit',  { 'on' : 'Reddit' } " Browse reddit
 Plug 'tmux-plugins/vim-tmux'                         " Everything for .tmux.conf
@@ -157,8 +189,18 @@ let g:syntastic_auto_jump=0                 " automatically jump to the error wh
 let g:syntastic_python_python_exec = '/usr/local/bin/python2.7'
 let g:syntastic_check_on_wq = 0
 let g:syntastic_java_javac_config_file_enabled = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-" Make syntastic not complain about ionic-html
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
+" I can't handle fucking crates
+" let g:syntastic_rust_checkers = ['rustc']
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+" Make syntastic not complain about ionic-html {{{
 let g:syntastic_html_tidy_blocklevel_tags = [
   \'ion-checkbox',
   \'ion-content',
@@ -190,6 +232,7 @@ let g:syntastic_html_tidy_blocklevel_tags = [
   \'ion-toggle',
   \'ion-view',
   \]
+" }}}
 
 " }}}
 
@@ -223,6 +266,7 @@ let g:startify_list_order = [ 'files', 'sessions', 'dir', 'bookmarks' ]
 let g:startify_bookmarks = [ { 'v': '~/.vimrc' },
                             \{ 'b': '~/.bashrc' },
                             \{ 'z': '~/.zshrc' },
+                            \{ 's': '~/dotfiles/shell_agnostic_rc.inc' },
                             \{ 't': '~/.tmux.conf' },
                             \{ 'g': '~/.gitconfig' },
                             \{ 'c': '~/.ssh/config' },
@@ -265,6 +309,8 @@ let g:airline_mode_map = {
 " }}}
 Plug 'elzr/vim-json'             , { 'for' : 'json' }   " Better JSON
 Plug 'justinmk/vim-syntax-extra' , { 'for' : 'C' }      " Improved C-syntax
+" I've disabled this because I've altered my tmux line, and it's getting
+" overridden by this (which is the point, I know)
 Plug 'edkolev/tmuxline.vim'                             " Tmux status line generator
 Plug 'tfnico/vim-gradle'         , { 'for' : 'gradle'}  " Gradle highlighting
 Plug 'CheezeCake/vim-gas'        , { 'for' : 'gas' }    " Gas highlighting
@@ -274,6 +320,8 @@ Plug 'vim-scripts/SDL-library-syntax-for-C'
 Plug 'ryanoasis/vim-devicons'                           " Integrates with other plugins
                                                         " Must be loaded after plugins
                                                         " using it
+Plug 'vim-php/phpctags'
+Plug 'vim-php/tagbar-phpctags.vim'
 
 " Color schemes
 Plug 'junegunn/seoul256.vim'
@@ -283,6 +331,9 @@ Plug '~/.vim/plugged/lettuce.vim'
 Plug 'NLKNguyen/papercolor-theme'
 " Plug 'chriskempson/base16-vim'
 Plug 'morhetz/gruvbox'
+
+" IDE plugins
+Plug 'jplaut/vim-arduino-ino'
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -306,13 +357,14 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 nnoremap du kdd
+nnoremap Y y$
 
 " More intuitive splitting
 set splitbelow
 set splitright
 
 " command line history
-set history=200
+set history=3000
 
 " enables matchit
 runtime macros/matchit.vim
@@ -332,7 +384,7 @@ set autoindent
 set diffopt+=vertical
 set encoding=utf-8
 set expandtab
-set foldopen=insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional: block
+set foldopen=insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional default: block
 set ignorecase
 set incsearch
 set laststatus=2
@@ -352,11 +404,11 @@ set wildmenu
 set wildmode=list:longest
 set wrapmargin=0
 
-set timeout timeoutlen=200 ttimeoutlen=200
+" set timeout timeoutlen=200 ttimeoutlen=200
 
 " Fixes strange backspace bug
 " http://vim.wikia.com/wiki/Backspace_and_delete_problems
-set backspace=2
+set backspace=indent,eol,start
 
 function! <SID>StripTrailingWhitespace() " {{{
     let l:_s=@/
@@ -382,8 +434,6 @@ nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <localleader>w :w<CR>
-" Conflicting with <leader>q for quicklook and I don't really know what it's good for
-" nnoremap <leader>q gqip
 " Run quicklook alias
 nnoremap <leader>q :!ql %<CR>
 cmap w!! w !sudo tee % >/dev/null
@@ -482,12 +532,6 @@ iabbr sof System.out.printf("\n");<esc>T(a
 
 nmap <leader>g :TagbarToggle<CR>
 
-" autocmd FileType java let b:jcommenter_class_author='Nicolai Skogheim (nicolai.skogheim@gmail.com)'
-" autocmd FileType java let b:jcommenter_file_author='Nicolai Skogheim (nicolai.skogheim@gmail.com)'
-" autocmd FileType java source ~/.vim/macros/jcommenter.vim
-" autocmd FileType java map <leader>j :call JCommentWriter()<CR>
-
-
 nnoremap gs :w<CR>
 
 " Put plugins and dictionaries in this dir (also on Windows)
@@ -508,10 +552,8 @@ nmap <C-å> <ESC>
 
 
 " Eclim
-" let g:EclimeCompletionMethod = 'omnifunc'
+let g:EclimeCompletionMethod = 'omnifunc'
 nmap <leader>ji :JavaImportOrganize<CR>
-
-let g:limelight_conceal_ctermfg = 240
 
 " Script to easily change working dir to the root of a git project
 function! Git_Repo_Cdup() " Get the relative path to repo root {{{
