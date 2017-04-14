@@ -133,18 +133,14 @@ PATH="$PATH:/usr/local/m-cli"
 ################################################
 
 # Have this last to make sure my own bins are searched first
-# PATH="$HOME/bin:$HOME/bin/git-radar:$PATH"
+PATH="$HOME/bin::$PATH"
+# PATH="$HOME/bin/git-radar:$PATH"
+
 
 # # shellcheck disable=SC1091
 # # shellcheck source=/Users/nicolai/bin/getKeyboardLayout.sh
 # source "$HOME/bin/getKeyboardLayout.sh"
 
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/nicolai/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/nicolai/google-cloud-sdk/completion.zsh.inc'
 
 # See definition further up, for explanation
 gvm_init
