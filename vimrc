@@ -52,6 +52,7 @@ Plug 'junegunn/fzf.vim'
   let g:fzf_vim_statusline = 0 " disable statusline overwriting
 
   nnoremap <silent> <leader>t :Files<CR>
+  nnoremap <silent> <localleader>t :GFiles<CR>
   nnoremap <silent> <leader>b :Buffers<CR>
   nnoremap <silent> <localleader>; :BLines<CR>
   nnoremap <silent> <localleader>. :Lines<CR>
