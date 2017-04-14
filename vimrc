@@ -29,7 +29,7 @@ call plug#begin('~/.vim/plugged')
 " https://github.com/begriffs/haskell-vim-now
 
 " Developer tools (for Vim)
-Plug 'L9'
+" Plug 'L9'
 
 " Collaborating
 " Plug 'FredKSchott/CoVim'                  " Shitty plug for collaborating
