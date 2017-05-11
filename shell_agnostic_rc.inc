@@ -13,6 +13,10 @@ alias wow='git status'
 # $ very push
 # sorrynotsorry
 
+pdfjoin() {
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=${@}
+}
+
 #  So as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 #  The default (legacy) behaviour of Ctrl-S is to stop
 #+ terminal output; Ctrl-Q continues output.
