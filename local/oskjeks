@@ -128,6 +128,19 @@ ql() {
 # m-cli: https://github.com/rgcr/m-cli
 PATH="$PATH:/usr/local/m-cli"
 
+
+# PERL
+PATH="/Users/nicolai/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/nicolai/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/nicolai/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT='--install_base "/Users/nicolai/perl5"';
+export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/nicolai/perl5";
+export PERL_MM_OPT;
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+
+
+
 ################################################
 ##            OWN BINARIES AND STUFF          ##
 ################################################
