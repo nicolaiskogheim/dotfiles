@@ -2,12 +2,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# yaourt wants to know my editor
+# Like EDITOR, but for Arch
 export VISUAL=vim
-
-# Kubernetes version to run (I don't know if this is needed
-# other than with the tutorial I'm taking on http://kubernetes.io/docs/getting-started-guides/docker/)
-export K8S_VERSION="1.2.1"
 
 # alias ls='ls --color=auto'
 # PS1='[\u@\h \W]\$ '
