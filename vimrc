@@ -3,6 +3,21 @@ set nocompatible
 set viminfo='100,n$HOME/.vim/files/info/viminfo " yes, no trailing '
 let maplocalleader = "\<space>"
 
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo') " {{{
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif " }}}
+
+" This doesn't always work.
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
     set clipboard^=unnamed
@@ -36,7 +51,7 @@ call plug#begin('~/.vim/plugged')
 
 " Utility
 " Plug 'christoomey/vim-tmux-runner'
-Plug 'Cofyc/vim-uncrustify', { 'for' : ['c', 'cpp'] }
+" Plug 'Cofyc/vim-uncrustify', { 'for' : ['c', 'cpp'] }
 " {{{
 augroup load_uncrustify_mappings
     autocmd!
@@ -87,6 +102,10 @@ Plug 'junegunn/fzf.vim'
 " }}}
 Plug 'junegunn/vim-peekaboo'                " Show registers in sidepanel
 Plug 'majutsushi/tagbar'                    " Show tags in sidepanel
+" {{{ tagbar options
+nmap <leader>g :TagbarToggle<CR>
+" }}}
+
 Plug 'tpope/vim-fugitive'                   " Git wrapper
 " {{{
 set diffopt+=vertical
@@ -103,9 +122,16 @@ let g:easytags_resolve_links = 1
 let g:easytags_suppress_ctags_warning = 1
 let g:easytags_async=1
 " }}}
-Plug 'ceedubs/sbt-ctags', { 'for' : 'scala' } " ctags with sbt
+" Plug 'ceedubs/sbt-ctags', { 'for' : 'scala' } " ctags with sbt
 "Plug 'luben/sctags'                         " Tags and Etags extractor for Scala
-Plug 'rizzatti/dash.vim', { 'on' : 'Dash' }   " Interface with Dash
+" Plug 'rizzatti/dash.vim', { 'on' : 'Dash' }   " Interface with Dash
+" {{{
+let g:dash_map = {
+        \ 'tex' : 'latex'
+        \ }
+nmap <silent> <localleader>d <Plug>DashSearch
+nmap <silent> <leader>s :.Dash<cr>
+" }}}
 Plug 'johnsyweb/vim-makeshift'                " Set makeprg according to build system
 " {{{ vim-makeshift options
 let g:makeshift_chdir = 1
@@ -118,7 +144,7 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_post_private = 1
 " }}}
-Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }  " Edit encrypted files
+" Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }  " Edit encrypted files
 Plug 'junegunn/vim-easy-align'                " Align text
 " {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -128,7 +154,7 @@ xmap ga <Plug>(EasyAlign)
 nmap <leader>ga <Plug>(EasyAlign)
 " }}}
 Plug 'justinmk/vim-dirvish'                   " # Directory viewer
-Plug 'mattn/emmet-vim', { 'for' : ['html', 'elm', 'blade', 'php'] } " Speed editing html
+" Plug 'mattn/emmet-vim', { 'for' : ['html', 'elm', 'blade', 'php'] } " Speed editing html
 " {{{
 let g:user_emmet_leader_key='<C-e>'
 " }}}
@@ -166,13 +192,13 @@ let g:rustfmt_autosave = 1
 Plug 'felixge/vim-nodejs-errorformat', { 'for' : 'js' }
 
 " Miscelaneous
-Plug 'junegunn/goyo.vim',        { 'on' : 'Goyo' }   " Zen-mode
+" Plug 'junegunn/goyo.vim',        { 'on' : 'Goyo' }   " Zen-mode
 Plug 'junegunn/limelight.vim',   { 'on' : 'Limelight' }
 " {{{
 let g:limelight_conceal_ctermfg = 240
 " }}}
-Plug 'fmoralesc/vim-tutor-mode', { 'on' : 'Tutor' }
-Plug 'joshhartigan/vim-reddit',  { 'on' : 'Reddit' } " Browse reddit
+" Plug 'fmoralesc/vim-tutor-mode', { 'on' : 'Tutor' }
+" Plug 'joshhartigan/vim-reddit',  { 'on' : 'Reddit' } " Browse reddit
 Plug 'tmux-plugins/vim-tmux'                         " Everything for .tmux.conf
 Plug 'tmux-plugins/vim-tmux-focus-events'            " Fixes issues with focus events
 Plug 'tpope/vim-repeat'                              " Enhance the dot-command
@@ -183,10 +209,15 @@ Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }    " Use w3m in vim
 " Static analysis
 Plug 'scrooloose/syntastic'                 " Syntax checking
 " {{{ syntastic options
-let g:syntastic_c_compiler_options="-g -Wall -Wextra -std=gnu99 -Wconversion"
+let g:syntastic_loc_list_height=3
+let g:syntastic_c_checkers = ['make']
+let g:syntastic_c_compiler="make"
+" let g:syntastic_c_compiler_options="-Wall -Wextra -std=gnu99 -Wconversion -Wpedantic"
+" OS flags
+let g:syntastic_c_compiler_options="-DLINUX_SIM=1 -Wall -Wextra -std=gnu99 -Wconversion -Wpedantic -nostartfiles -fno-defer-pop -Wno-implicit-function-declaration -fno-stack-protector -melf_i386 -N"
 let g:syntastic_enable_signs=1              " mark syntax errors with :signs
 let g:syntastic_auto_jump=0                 " automatically jump to the error when saving the file
-let g:syntastic_python_python_exec = '/usr/local/bin/python2.7'
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 let g:syntastic_check_on_wq = 0
 let g:syntastic_java_javac_config_file_enabled = 1
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
@@ -288,7 +319,7 @@ Plug 'nicolaiskogheim/vim-snippets'
 " Appearance
 Plug 'sheerun/vim-polyglot'                             " Lanugage packs
 Plug 'vim-jp/vim-java'           , { 'for' : 'java' }   " Java highlighting
-Plug 'amdt/vim-niji'             , { 'for' : 'scheme' } " Rainbow parenthesis for Scheme etc.
+" Plug 'amdt/vim-niji'             , { 'for' : 'scheme' } " Rainbow parenthesis for Scheme etc.
 Plug 'bling/vim-airline'                                " Statusline
 " {{{ airline options
 let g:airline_powerline_fonts = 1
@@ -333,7 +364,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 
 " IDE plugins
-Plug 'jplaut/vim-arduino-ino'
+" Plug 'jplaut/vim-arduino-ino'
 
 " All of your Plugs must be added before the following line
 call plug#end()
@@ -376,10 +407,9 @@ xnoremap & :&&<CR>
 " Fast switch to alternate buffer
 noremap <leader><leader> <C-^>
 
-
 " set scrolloff=3
 " set visualbell
-"set showmode
+" set showmode
 set autoindent
 set diffopt+=vertical
 set encoding=utf-8
@@ -389,6 +419,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set matchtime=2
+set modelines=2
 set number
 set shiftround " Don't know if I want this. Leaving it here to not forget.
 set shiftwidth=4
@@ -430,15 +461,21 @@ nnoremap <silent> <leader>W :call <SID>StripTrailingWhitespace()<CR>
 nnoremap <leader>a :Ack
 " This one is conflicting somewhat with <leader>f
 nnoremap <leader>ft Vatzf
+nnoremap <leader>f zfip
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <localleader>w :w<CR>
 " Run quicklook alias
 nnoremap <leader>q :!ql %<CR>
+nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
+nnoremap <leader>d :redraw!<CR>
+vnoremap <localleader>y :w !pbcopy<cr>
+nnoremap <localleader>y :w !pbcopy<cr>
+nmap <C-å> <ESC>
+
 cmap w!! w !sudo tee % >/dev/null
 
-set laststatus=2
 "set fillchars+=stl:\ ,stlnc:\
 
 " File patterns to ignore {{{
@@ -455,17 +492,10 @@ set wildignore+=*.dSYM
 set wildignore+=build
 " }}}
 
-set modelines=2
-
-" Folding
-nnoremap <leader>f zfip
-
 " switch tabs using left / right arrow keys
 map <Right> :tabnext<CR>
 map <Left> :tabprevious<CR>
 
-" I have to do a lot of redrawing
-nnoremap <leader>d :redraw!<CR>
 
 " function to execute current buffer using it's shebang {{{
 au BufEnter *
@@ -497,10 +527,20 @@ augroup autocommands
     autocmd FileType c inoremap <buffer> <C-l> <C-R>="->"<C-M>
     autocmd FileType cpp inoremap <buffer> <C-l> <C-R>="->"<C-M>
 
-    autocmd FileType php inoremap <buffer> <C-l> <C-R>="->"<C-M>
+    autocmd FileType php inoremap <buffer> <C-l> <C-R>="=>"<C-M>
 
     autocmd FileType haskell inoremap <buffer> <C-l> <C-R>="->"<C-M>
     autocmd FileType haskell nnoremap <buffer> <leader>s :w \|:!runhaskell %<cr>
+
+    " Regular latex
+    "autocmd FileType tex nnoremap <buffer> <leader>r :!export TEXINPUTS=".:./ifi:" ; pdflatex % && open %:r.pdf<cr>
+    autocmd Filetype tex nnoremap <buffer> <leader>r :!make && open %:r.pdf<cr>
+    " Latex with Biber
+    " autocmd FileType tex nnoremap <buffer> <leader>r :!pdflatex %
+    "                                                  \ && biber %:r
+    "                                                  \ && pdflatex %
+    "                                                  \ && open %:r.pdf<cr>
+
 
 
     " bats
@@ -511,45 +551,6 @@ augroup autocommands
     autocmd! bufwritepost .vimrc source %
 
 augroup END
-
-nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
-vnoremap <leader>y :w !pbcopy<cr>
-
-
-nnoremap <leader>R :redraw!<CR>
-" nnoremap <SPACE>w :w<CR> " I don't like to wait for space to do its thing
-
-" Note to self: Denne ødelegger tmux-mappingene
-" augroup myvimrc
-"     au!
-"     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-" augroup END
-
-" One should always be greeted by a cat when opening Vim.
-" echom ">^.^<" " This should print after Vim has loaded
-iabbr sop System.out.println();<esc>T(i
-iabbr sof System.out.printf("\n");<esc>T(a
-
-nmap <leader>g :TagbarToggle<CR>
-
-nnoremap gs :w<CR>
-
-" Put plugins and dictionaries in this dir (also on Windows)
-let vimDir = '$HOME/.vim'
-let &runtimepath.=','.vimDir
-
-" Keep undo history across sessions by storing it in a file
-if has('persistent_undo') " {{{
-    let myUndoDir = expand(vimDir . '/undodir')
-    " Create dirs
-    call system('mkdir ' . vimDir)
-    call system('mkdir ' . myUndoDir)
-    let &undodir = myUndoDir
-    set undofile
-endif " }}}
-
-nmap <C-å> <ESC>
-
 
 " Eclim
 let g:EclimeCompletionMethod = 'omnifunc'
