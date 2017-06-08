@@ -5,6 +5,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 zmodload zsh/complist
 autoload -U compinit
 compinit -u
