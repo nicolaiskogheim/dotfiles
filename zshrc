@@ -102,7 +102,7 @@ if ! zgen saved; then
 
   # Must be after plugins and compinit
   zgen load zsh-users/zsh-syntax-highlighting
-
+  zgen load lukechilds/zsh-nvm
 
   zgen save
 fi
