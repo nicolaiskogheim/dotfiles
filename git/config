@@ -1,3 +1,4 @@
+# vim:ft=gitconfig
 [user]
     name = Nicolai Skogheim
     email = nicolai.skogheim@gmail.com
