@@ -157,6 +157,10 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-abolish'                    " Search and substitute on crack
     Plug 'tpope/vim-surround'
     Plug 'wellle/targets.vim'
+    Plug 'mattn/emmet-vim', { 'for' : ['html', 'elm', 'blade', 'php'] } " Speed editing html
+    " {{{
+        let g:user_emmet_leader_key='<C-e>'
+    " }}}
 " }}}
 
 """"" Vim "extensions" {{{
