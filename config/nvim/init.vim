@@ -301,7 +301,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     " index(g:polyglot_disabled, 'graphql') == -1
     """ C
     Plug 'justinmk/vim-syntax-extra' , { 'for' : 'C' }      " Improved C-syntax
-    Plug 'vim-scripts/SDL-library-syntax-for-C'
+    Plug 'vim-scripts/SDL-library-syntax-for-C', { 'for' : 'C' }
     """ GAS
     Plug 'CheezeCake/vim-gas'        , { 'for' : 'gas' }    " Gas highlighting
     """ Go
