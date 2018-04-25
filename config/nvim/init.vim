@@ -69,6 +69,7 @@ set expandtab
 set foldopen=insert,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional default: block,jump
 set ignorecase
 set modelines=2
+set noequalalways  " Never resize panes when splitting
 set number
 set shiftwidth=4
 set showfulltag
