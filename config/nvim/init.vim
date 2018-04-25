@@ -36,6 +36,7 @@ nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
 nnoremap <leader>d :redraw!<CR>
 xnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
 nnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
+nnoremap <silent> <localleader>E :Sex<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " Persist flags in substitute-commend shortcut
