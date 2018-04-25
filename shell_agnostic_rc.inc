@@ -23,7 +23,7 @@ pdfjoin() {
 #  I use Ctrl-S to navigate left in tmux and vim.
 stty -ixon
 
-export EDITOR=vim
+export EDITOR=nvim
 # Arch uses VISUAL instead of EDITOR
 export VISUAL=vim
 export HISTCONTROL=ignorespace
