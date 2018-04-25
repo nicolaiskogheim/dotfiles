@@ -295,7 +295,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 " }}}
 
 """""" Language specific {{{
-    Plug 'sheerun/vim-polyglot'                             " Language packs
+    " Plug 'sheerun/vim-polyglot'                             " Language packs
+    " XXX disable graphql in polyglot if you enable this one
+    " This is the check that polyglot does:
+    " index(g:polyglot_disabled, 'graphql') == -1
     """ C
     Plug 'justinmk/vim-syntax-extra' , { 'for' : 'C' }      " Improved C-syntax
     Plug 'vim-scripts/SDL-library-syntax-for-C'
