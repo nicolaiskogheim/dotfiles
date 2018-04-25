@@ -228,6 +228,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """"" Integration plugins {{{
     Plug 'tpope/vim-fugitive'                " Everything git from inside neovim
+    " {{{ fugitive options
+    nnoremap <silent> <localleader>gs :Gstatus<CR>
+    " }}}
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     " {{{ fzf options
