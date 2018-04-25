@@ -1,4 +1,14 @@
 " vim:foldmethod=marker
+
+" TODO(nicolai):
+" Decide what/how to do with ranger
+" https://github.com/ranger/ranger
+" https://github.com/Mizuchi/vim-ranger
+" https://github.com/rafaqz/ranger.vim
+" https://github.com/francoiscabrol/ranger.vim/
+" TODO(nicolai): Figure out if this pgsql plugin is any good
+" https://github.com/lifepillar/pgsql.vim
+
 " Autoinstall vim-plug {{{
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
