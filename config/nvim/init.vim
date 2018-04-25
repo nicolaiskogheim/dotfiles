@@ -346,6 +346,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'chr4/nginx.vim', " Smart nginx highlighting
     """ Html template languages
     Plug 'jwalton512/vim-blade'      , { 'for' : 'blade' }  " Blade highlighting
+    Plug 'plasticboy/vim-markdown' , { 'for' : 'markdown' } " Markdown highlighting
 " }}}
 
 """""" Snippets {{{
