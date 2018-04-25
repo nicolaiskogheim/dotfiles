@@ -309,6 +309,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     " {{{
         let g:go_fmt_command = "goimports"
     " }}}
+    " GraphQL
+    Plug 'jparise/vim-graphql'
     Plug 'jodosha/vim-godebug', { 'for' : ['go'] } " Interface to Go debugger
     """ Elm
     Plug 'elmcast/elm-vim'
