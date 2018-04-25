@@ -278,9 +278,9 @@ call plug#begin('~/.local/share/nvim/plugged')
         let g:gist_detect_filetype = 1
         let g:gist_post_private = 1
     " }}}
-    Plug 'tmux-plugins/vim-tmux'                             " Everything for .tmux.conf
-    Plug 'edkolev/tmuxline.vim'                             " Tmux status line generator
-    Plug 'tmux-plugins/vim-tmux-focus-events'                " Fixes issues with focus events
+    Plug 'tmux-plugins/vim-tmux'                            " Everything for .tmux.conf
+    " Plug 'edkolev/tmuxline.vim'                             " Tmux status line generator
+    Plug 'tmux-plugins/vim-tmux-focus-events'               " Fixes issues with focus events
     Plug 'christoomey/vim-tmux-navigator'
     " {{{ vim-tmux-navigator options
         let g:tmux_navigator_no_mappings = 1
