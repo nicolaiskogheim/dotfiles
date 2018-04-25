@@ -313,7 +313,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'jparise/vim-graphql'
     Plug 'jodosha/vim-godebug', { 'for' : ['go'] } " Interface to Go debugger
     """ Elm
-    Plug 'elmcast/elm-vim'
+    Plug 'elmcast/elm-vim', { 'for' : 'elm' }
     " {{{
         let g:elm_format_autosave = 1
         let g:elm_setup_keybindings = 0
