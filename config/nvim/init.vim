@@ -342,6 +342,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tfnico/vim-gradle', { 'for' : 'gradle'}  " Gradle highlighting
     """ JSON
     Plug 'elzr/vim-json',   { 'for' : 'json' }   " Better looking JSON
+    """ Nginx
+    Plug 'chr4/nginx.vim', " Smart nginx highlighting
     """ Html template languages
     Plug 'jwalton512/vim-blade'      , { 'for' : 'blade' }  " Blade highlighting
 " }}}
