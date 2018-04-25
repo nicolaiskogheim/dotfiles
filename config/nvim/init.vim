@@ -291,6 +291,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         nnoremap <silent> <c-f> :TmuxNavigateRight<cr>
         nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
     " }}}
+    Plug 'https://github.com/thiderman/vim-supervisor'        " Supervisor wrapper
 " }}}
 
 """""" Language specific {{{
