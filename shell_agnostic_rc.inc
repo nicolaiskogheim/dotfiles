@@ -27,7 +27,9 @@ export EDITOR=nvim
 # Arch uses VISUAL instead of EDITOR
 export VISUAL=vim
 export HISTCONTROL=ignorespace
-export TERM="xterm-256color"
+
+# Neovim doesn't like this
+# export TERM="xterm-256color"
 
 
 trim() {
