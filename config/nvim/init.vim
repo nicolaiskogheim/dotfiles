@@ -305,7 +305,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     """ GAS
     Plug 'CheezeCake/vim-gas'        , { 'for' : 'gas' }    " Gas highlighting
     """ Go
-    Plug 'fatih/vim-go', { 'for' : ['go'] , 'tag' : '*' } " For Go development
+    Plug 'fatih/vim-go', { 'for' : ['go'] } " For Go development
     " {{{
         let g:go_fmt_command = "goimports"
     " }}}
