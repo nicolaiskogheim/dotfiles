@@ -38,6 +38,7 @@ xnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
 nnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
 nnoremap <silent> <localleader>E :Sex<CR>
 nnoremap <silent> <localleader>e :Ex<CR>
+nnoremap <silent> <localleader>b :bd \| bn<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " Persist flags in substitute-commend shortcut
