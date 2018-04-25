@@ -185,6 +185,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'mhinz/vim-startify'
     " {{{ startify options
     nnoremap <silent> <localleader>s :Startify<CR>
+    nnoremap <silent> <localleader>S :tabe \| Startify<CR>
 
     let g:startify_list_order = [ 'files', 'sessions', 'dir', 'bookmarks' ]
     let g:startify_bookmarks = [ { 'v': '~/.vimrc' },
