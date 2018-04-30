@@ -1,0 +1,3 @@
+#!/bin/sh
+
+setxkbmap -layout no -option compose:ralt -option grp:ctrl_alt_toggle

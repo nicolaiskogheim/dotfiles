@@ -1,0 +1,5 @@
+#!/bin/sh
+
+TODAY="$(date +%b-%d-%Y)"
+
+nvim "/home/nicolai/Documents/Timeføringsnotater/${TODAY}.md"
