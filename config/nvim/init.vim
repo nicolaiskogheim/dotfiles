@@ -284,19 +284,35 @@ call plug#begin('~/.local/share/nvim/plugged')
         let g:gist_detect_filetype = 1
         let g:gist_post_private = 1
     " }}}
+
+    " Integrating with pane managers is not only only! But, but.
+    " If this works, you should be able to navigate seamlessly through panes
+    " and buffers alike, in both tmux and i3.
+
+    Plug 'termhn/i3-vim-nav'
+    " Plug 'jwilm/i3-vim-focus'
     Plug 'tmux-plugins/vim-tmux'                            " Everything for .tmux.conf
     " Plug 'edkolev/tmuxline.vim'                             " Tmux status line generator
     Plug 'tmux-plugins/vim-tmux-focus-events'               " Fixes issues with focus events
     Plug 'christoomey/vim-tmux-navigator'
     " {{{ vim-tmux-navigator options
         let g:tmux_navigator_no_mappings = 1
-
+    " }}}
+    if !empty($TMUX)
         nnoremap <silent> <c-s> :TmuxNavigateLeft<cr>
         nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
         nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
         nnoremap <silent> <c-f> :TmuxNavigateRight<cr>
         nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
-    " }}}
+    elseif $DESKTOP_SESSION=="i3"
+        set title
+        " {{{ i3-vim-nav options
+            nnoremap <c-s> :echo 'hei' \| call Focus('left', 'h')<CR>
+            nnoremap <c-j> :call Focus('down', 'j')<CR>
+            nnoremap <c-k> :call Focus('up', 'k')<CR>
+            nnoremap <c-f> :call Focus('right', 'l')<CR>
+        " }}}
+    endif
     Plug 'https://github.com/thiderman/vim-supervisor'        " Supervisor wrapper
 " }}}
 
