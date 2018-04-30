@@ -52,6 +52,12 @@ which xdotool >/dev/null || \
     (echo >&2 "Please 'pacman -S xdotool'"\
     && echo >&2 " Vim integration won't work otherwise")
 
+if [[ ! -f "$HOME/.pam_environment" ]]
+then
+    printf 'SSH_AUTH_SOCK DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"' \
+      > .pam_environment
+fi
+
 # Functions below 
 
 function torrent {
