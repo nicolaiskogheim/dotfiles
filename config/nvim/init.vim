@@ -9,6 +9,11 @@
 " TODO(nicolai): Figure out if this pgsql plugin is any good
 " https://github.com/lifepillar/pgsql.vim
 
+" This machine needs to be told where pyton is
+if $HOST=="ganon"
+    let g:python3_host_prog='/usr/bin/python'
+endif
+
 " Autoinstall vim-plug {{{
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
