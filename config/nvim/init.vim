@@ -406,6 +406,13 @@ Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'nvim', 'do': '~/.local/share/nvim/plug
 " Initialize plugin system
 call plug#end()
 
+"""""""""" Settings that depend on filetype
+augroup filetype_sensitive
+    autocmd!
+    autocmd FileType yaml setl shiftwidth=2
+augroup END
+
+
 """""""""" Color Scheme (must be after plugins that install colors chemes)
 colorscheme papercolor
 let g:gruvbox_contrast_dark="hard"
