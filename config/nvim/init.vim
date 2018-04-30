@@ -199,6 +199,7 @@ call plug#begin('~/.local/share/nvim/plugged')
                                 \{ 'z': '~/.zshrc' },
                                 \{ 's': '~/dotfiles/shell_agnostic_rc.inc' },
                                 \{ 't': '~/.tmux.conf' },
+                                \{ '3': '~/.config/i3/config' },
                                 \{ 'g': '~/.gitconfig' },
                                 \{ 'c': '~/.ssh/config' },
                                 \{ 'o': '~/dotfiles/local/oskjeks' }
