@@ -414,7 +414,7 @@ augroup END
 
 
 """""""""" Color Scheme (must be after plugins that install colors chemes)
-colorscheme papercolor
+colorscheme gruvbox
 let g:gruvbox_contrast_dark="hard"
 set background=dark
 
