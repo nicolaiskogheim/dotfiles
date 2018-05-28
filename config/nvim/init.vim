@@ -202,10 +202,11 @@ call plug#begin('~/.local/share/nvim/plugged')
                                 \{ '3': '~/.config/i3/config' },
                                 \{ 'g': '~/.gitconfig' },
                                 \{ 'c': '~/.ssh/config' },
-                                \{ 'o': '~/dotfiles/local/oskjeks' }
+                                \{ 'o': '~/dotfiles/local/oskjeks' },
+                                \{ 'a': '~/dotfiles/local/ganon' }
                                 \]
 
-    let g:startify_custom_indices = ['r', 'u', 'm', 'aa', 'af', 'ad', 'ag', 'aj', 'al', 'ak', 'da', 'df', 'dd', 'dg', 'dj', 'dl', 'dk', 'lf', 'ld', 'lg', 'lj', 'lh', 'll', 'lk', 'la', 'oa', 'of', 'od', 'og', 'oj', 'ol', 'ok']
+    let g:startify_custom_indices = ['r', 'u', 'm', 'da', 'df', 'dd', 'dg', 'dj', 'dl', 'dk', 'lf', 'ld', 'lg', 'lj', 'lh', 'll', 'lk', 'la', 'lb', 'lc', 'oa', 'of', 'od', 'og', 'oj', 'ol', 'ok']
 
     " TODO: Uncomment below line when has a proper patched font
     " let g:startify_custom_entry_display = "\" (\" . WebDevIconsGetFileTypeSymbol(entry_path) . \") \" . repeat(' ', (3 - strlen(index))) . entry_path"
