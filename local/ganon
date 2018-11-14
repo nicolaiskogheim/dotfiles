@@ -41,6 +41,9 @@ export VISUAL=vim
 AUTOENV_PATH="/usr/share/autoenv-git/activate.sh"
 test -f "$AUTOENV_PATH" && source "$AUTOENV_PATH"
 
+## Completion sourcing
+source ~/.completions/gcloud.completion.zsh.inc
+
 # I use commands located in ~/bin for this now
 # xmod="xmodmap $HOME/.config/xmodmap/config"
 # alias us="setxkbmap us; $xmod"
