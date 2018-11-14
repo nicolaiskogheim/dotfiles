@@ -63,6 +63,17 @@ then
       > .pam_environment
 fi
 
+# Check that ssh-agent is running, lest I must type my ssh key password
+# everytime I use it.
+if ! systemctl status ssh-agent --user &>/dev/null
+then
+    printf >&2 "SSH-agent not running.\n"
+    printf >&2 "Please do the following:\n"
+    printf >&2 "cp -R ~/dotfiles/config/systemd/user ~/.config/systemd\n"
+    printf >&2 "\tsystemctl enable ssh-agent.service --user\n"
+    printf >&2 "\tsystemctl start ssh-agent.service --user\n"
+fi
+
 # Functions below 
 
 function torrent {
