@@ -6,6 +6,8 @@
 # This is mouse pointer config that must exist in
 # /etc/X11/xorg.conf.d/99-libinput-custom-config.conf
 # I have it here in case I forget about this later.
+# This should only be needed with mice with high sense.
+# I don't need it for my lenovo mouse.
 # Found this at https://wiki.archlinux.org/index.php/Mouse_acceleration
 #
 # Section "InputClass"
