@@ -183,7 +183,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'w0rp/ale'                                          " Asynchonous statis analysis
     " Ale options {{{
         " I turn Ale off sometimes if neovim becomes sluggish
-        nnoremap <localleader>a :ALEToggle<CR>
+        nnoremap <localleader>at :ALEToggle<CR>
+        nnoremap <localleader>af :ALEFix<CR>
     " }}}
     Plug 'nacitar/a.vim', { 'for' : ['c', 'cpp'] } " Helpers for opening related files (ish).
                                                    "Supports more languages than I selected.
