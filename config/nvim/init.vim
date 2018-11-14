@@ -164,7 +164,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'wellle/targets.vim'
     Plug 'mattn/emmet-vim', { 'for' : ['html', 'elm', 'blade', 'php'] } " Speed editing html
     " {{{
-        let g:user_emmet_leader_key='<C-e>'
+        let g:user_emmet_leader_key='<C-q>'
     " }}}
 " }}}
 

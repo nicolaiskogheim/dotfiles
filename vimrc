@@ -156,7 +156,7 @@ nmap <leader>ga <Plug>(EasyAlign)
 Plug 'justinmk/vim-dirvish'                   " # Directory viewer
 " Plug 'mattn/emmet-vim', { 'for' : ['html', 'elm', 'blade', 'php'] } " Speed editing html
 " {{{
-let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_leader_key='<C-q>'
 " }}}
 Plug 'fatih/vim-go', { 'for' : ['go'] } " For Go development
 " {{{
