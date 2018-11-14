@@ -371,6 +371,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     """ Html template languages
     Plug 'jwalton512/vim-blade'      , { 'for' : 'blade' }  " Blade highlighting
     Plug 'plasticboy/vim-markdown' , { 'for' : 'markdown' } " Markdown highlighting
+    Plug 'mustache/vim-mustache-handlebars' , { 'for' : 'mustache' } " Mustache and handlebars highlighting
     Plug 'kannokanno/previm', { 'for' : ['markdown'] }     " Preview for markdown, rst, and mermaid
     " previm options {{{
     let g:previm_open_cmd = 'open -a Google\ Chrome'
