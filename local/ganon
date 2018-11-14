@@ -59,7 +59,7 @@ which xdotool >/dev/null || \
 
 if [[ ! -f "$HOME/.pam_environment" ]]
 then
-    printf 'SSH_AUTH_SOCK DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"' \
+    printf 'SSH_AUTH_SOCK DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"\n' \
       > .pam_environment
 fi
 
