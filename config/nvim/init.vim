@@ -310,12 +310,10 @@ call plug#begin('~/.local/share/nvim/plugged')
         nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
     elseif $DESKTOP_SESSION=="i3"
         set title
-        " {{{ i3-vim-nav options
-            nnoremap <c-s> :echo 'hei' \| call Focus('left', 'h')<CR>
-            nnoremap <c-j> :call Focus('down', 'j')<CR>
-            nnoremap <c-k> :call Focus('up', 'k')<CR>
-            nnoremap <c-f> :call Focus('right', 'l')<CR>
-        " }}}
+        nnoremap <silent> <c-s> :call Focus('left', 'h')<CR>
+        nnoremap <silent> <c-j> :call Focus('down', 'j')<CR>
+        nnoremap <silent> <c-k> :call Focus('up', 'k')<CR>
+        nnoremap <silent> <c-f> :call Focus('right', 'l')<CR>
     endif
     Plug 'https://github.com/thiderman/vim-supervisor'        " Supervisor wrapper
 " }}}
