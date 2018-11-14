@@ -185,6 +185,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         " I turn Ale off sometimes if neovim becomes sluggish
         nnoremap <localleader>at :ALEToggle<CR>
         nnoremap <localleader>af :ALEFix<CR>
+        let g:ale_fix_on_save = 0
     " }}}
     Plug 'nacitar/a.vim', { 'for' : ['c', 'cpp'] } " Helpers for opening related files (ish).
                                                    "Supports more languages than I selected.
