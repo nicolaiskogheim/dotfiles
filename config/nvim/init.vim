@@ -192,6 +192,8 @@ call plug#begin('~/.local/share/nvim/plugged')
                                                    "Supports more languages than I selected.
     Plug 'mhinz/vim-startify'
     " {{{ startify options
+    let g:startify_change_to_dir = 0
+
     nnoremap <silent> <localleader>s :Startify<CR>
     nnoremap <silent> <localleader>S :tabe \| Startify<CR>
 
