@@ -193,6 +193,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'mhinz/vim-startify'
     " {{{ startify options
     let g:startify_change_to_dir = 0
+    let g:startify_change_to_vcs_root = 1
 
     nnoremap <silent> <localleader>s :Startify<CR>
     nnoremap <silent> <localleader>S :tabe \| Startify<CR>
