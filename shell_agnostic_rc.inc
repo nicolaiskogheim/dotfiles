@@ -17,6 +17,13 @@ pdfjoin() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=${@}
 }
 
+# Print a list of the folders in the current directory, prepended with file
+# count for each folder.
+# Does not count contained directories.
+folder_count() {
+    find . -xdev -type f | cut -d "/" -f 2 | sort | uniq -c | sort -n
+}
+
 #  So as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 #  The default (legacy) behaviour of Ctrl-S is to stop
 #+ terminal output; Ctrl-Q continues output.
