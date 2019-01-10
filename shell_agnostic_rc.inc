@@ -20,8 +20,15 @@ pdfjoin() {
 # Print a list of the folders in the current directory, prepended with file
 # count for each folder.
 # Does not count contained directories.
+# [$1 path, default "."]
 folder_count() {
-    find . -xdev -type f | cut -d "/" -f 2 | sort | uniq -c | sort -n
+    # Wanted to use 'path' as name, but we can't do that, can we :)
+    location="${1}"
+    if [ -z "${location}" ]
+    then
+        location='.'
+    fi
+    find "${location}" -xdev -type f | cut -d "/" -f 2 | sort | uniq -c | sort -n
 }
 
 #  So as not to be disturbed by Ctrl-S ctrl-Q in terminals:
