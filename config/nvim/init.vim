@@ -65,9 +65,8 @@ xnoremap & :&&<CR>
 " in command line mode.
 " This is done to let the chords take advantage of
 " the filtering you get when using arrowkeys.
-" XXX: I haven't gotten this to work in Neovim
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
+cmap <C-p> <Up>
+cmap <C-n> <Down>
 
 " switch tabs using left / right arrow keys
 map <Right> :tabnext<CR>
