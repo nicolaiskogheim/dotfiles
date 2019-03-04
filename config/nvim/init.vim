@@ -69,8 +69,8 @@ cmap <C-p> <Up>
 cmap <C-n> <Down>
 
 " switch tabs using left / right arrow keys
-map <Right> :tabnext<CR>
-map <Left> :tabprevious<CR>
+nmap <Right> :tabnext<CR>
+nmap <Left> :tabprevious<CR>
 
 " }}}
 
