@@ -39,12 +39,23 @@ nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <localleader>w :w<CR>
 nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
 nnoremap <leader>d :redraw!<CR>
-xnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
-nnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
 nnoremap <silent> <localleader>E :Sex<CR>
 nnoremap <silent> <localleader>e :Ex<CR>
 nnoremap <silent> <localleader>b :bd \| bn<CR>
 cmap w!! w !sudo tee % >/dev/null
+
+" Mappings for copying to clipboard
+if executable('pbcopy')
+    nnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
+    " :w only writes whole lines, so we have to do some magic here.
+    " And we go through `head --bytes=-1` to remove the added newline.
+	xnoremap <localleader>y y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| pbcopy<CR><CR>:bdelete!<CR>
+elseif executable('xsel')
+    nnoremap <silent> <localleader>y :w !xsel -i -b<CR><CR>
+    " :w only writes whole lines, so we have to do some magic here.
+    " And we go through `head --bytes=-1` to remove the added newline.
+	xnoremap <localleader>y y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| xsel -i -b<CR><CR>:bdelete!<CR>
+endif
 
 " Persist flags in substitute-commend shortcut
 nnoremap & :&&<CR>
