@@ -15,7 +15,8 @@
     br = branch
     bm = branch --merged
     bd = branch -d
-    bD = branch -D
+    # Aliases seems to be case insensitive, so we do bdd instead of bD.
+    bdd = branch -D
 
   # Diff
     dc = diff --cached
