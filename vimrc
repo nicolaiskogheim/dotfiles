@@ -480,7 +480,6 @@ nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
 nnoremap <leader>d :redraw!<CR>
 vnoremap <localleader>y :w !pbcopy<cr>
 nnoremap <localleader>y :w !pbcopy<cr>
-nmap <C-å> <ESC>
 
 cmap w!! w !sudo tee % >/dev/null
 
