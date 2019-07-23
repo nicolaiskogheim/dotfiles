@@ -112,7 +112,7 @@ set diffopt+=vertical
 Plug 'xolox/vim-easytags'                   " ctags for vim, ala Go-to-definition
 " Plug 'oepn/vim-easytags'                   " ctags for vim, ala Go-to-definition
 " {{{ easytags options
-" let g:easytags_events = ['BufReadPost', 'BufWritePost'] " This is sofa king slow.
+let g:easytags_events = ['BufReadPost', 'BufWritePost'] " This is sofa king slow.
 nnoremap <localleader>ht :HighlightTags<CR>
 nnoremap <localleader>ut :UpdateTags<CR>
 let g:easytags_async = 1
