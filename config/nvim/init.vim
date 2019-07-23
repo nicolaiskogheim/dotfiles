@@ -429,7 +429,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'NLKNguyen/papercolor-theme'
 " }}}
 
-Plug 'ryanoasis/vim-devicons'                           " Integrates with other plugins
+" Plug 'ryanoasis/vim-devicons'                           " Integrates with other plugins
                                                         " Must be loaded after plugins
                                                         " using it
 
