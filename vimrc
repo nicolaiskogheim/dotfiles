@@ -302,6 +302,7 @@ Plug 'mhinz/vim-startify'
 
 let g:startify_list_order = [ 'files', 'sessions', 'dir', 'bookmarks' ]
 let g:startify_bookmarks = [ { 'v': '~/.vimrc' },
+                            \{ 'n': '~/.config/nvim/init.vim' },
                             \{ 'b': '~/.bashrc' },
                             \{ 'z': '~/.zshrc' },
                             \{ 's': '~/dotfiles/shell_agnostic_rc.inc' },
