@@ -157,7 +157,7 @@ Plug 'justinmk/vim-dirvish'                   " # Directory viewer
 " {{{
 let g:user_emmet_leader_key='<C-q>'
 " }}}
-Plug 'fatih/vim-go', { 'for' : ['go'] } " For Go development
+Plug 'fatih/vim-go', { 'for' : ['go'] , 'tag' : '*' } " For Go development
 " {{{
 let g:go_fmt_command = "goimports"
 " }}}
