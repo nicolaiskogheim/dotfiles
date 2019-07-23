@@ -181,12 +181,10 @@ let g:elm_syntastic_show_warnings = 1
 " let g:elm_format_fail_silently = 0
 " let g:elm_setup_keybindings = 1
 " }}}
-Plug 'https://github.com/rhysd/vim-go-impl', { 'for' : ['go'] }
 Plug 'rust-lang/rust.vim', { 'for' : ['rust'] }
 " {{{
 let g:rustfmt_autosave = 1
 " }}}
-
 " Quickfix parsers
 Plug 'felixge/vim-nodejs-errorformat', { 'for' : 'js' }
 
