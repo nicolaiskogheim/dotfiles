@@ -201,6 +201,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'majutsushi/tagbar'                    " Show tags in sidepanel
     " {{{ tagbar options
         nmap <leader>g :TagbarToggle<CR>
+        let g:tagbar_show_linenumbers = 1
     " }}}
     Plug 'tpope/vim-repeat'                                  " Enhance the dot-command
     Plug 'tpope/vim-speeddating'                             " Work with dates
