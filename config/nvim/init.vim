@@ -247,7 +247,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     " TODO: Uncomment below line when has a proper patched font
     " let g:startify_custom_entry_display = "\" (\" . WebDevIconsGetFileTypeSymbol(entry_path) . \") \" . repeat(' ', (3 - strlen(index))) . entry_path"
     " }}}
-    " Plug 'vim-airline/vim-airline'                                " Statusline, but it's sooo slow :(((
+    " Plug 'vim-airline/vim-airline'               " Statusline, but it's sooo slow :(((
     " {{{ airline options
         let g:airline_extensions = []
         let g:airline_highlighting_cache = 0
