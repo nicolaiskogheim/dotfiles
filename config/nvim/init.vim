@@ -204,7 +204,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         let g:tagbar_show_linenumbers = 1
     " }}}
     Plug 'tpope/vim-repeat'                                  " Enhance the dot-command
-    Plug 'tpope/vim-speeddating'                             " Work with dates
+    " Plug 'tpope/vim-speeddating'                             " Work with dates
     Plug 'xolox/vim-misc'                                    " Dependency for other plugins
     Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }        " Use w3m in vim
     Plug 'https://github.com/editorconfig/editorconfig-vim', " Makes Vim respect .editorconfig
