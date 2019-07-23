@@ -325,7 +325,7 @@ Plug 'nicolaiskogheim/vim-snippets'
 " /end snipmate
 
 " Appearance
-Plug 'sheerun/vim-polyglot'                             " Lanugage packs
+Plug 'sheerun/vim-polyglot'                             " Language packs
 Plug 'vim-jp/vim-java'           , { 'for' : 'java' }   " Java highlighting
 " Plug 'amdt/vim-niji'             , { 'for' : 'scheme' } " Rainbow parenthesis for Scheme etc.
 Plug 'bling/vim-airline'                                " Statusline
