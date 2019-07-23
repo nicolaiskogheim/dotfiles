@@ -19,6 +19,13 @@ alias stripcolors='gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 alias tks="tmux kill-session"
 alias trash=rmtrash
 
+# Some aliases to make my bbb life easier
+alias bbbkom='open "/Users/nicolai/Dropbox/BBB Komp"'
+alias bbbsax='open "/Users/nicolai/Dropbox/BBB Sax/Dansemappe-sax"'
+alias bbbtru='open "/Users/nicolai/Dropbox/BBB Trumpet/Dansemappe-trompet"'
+alias bbbtro='open "/Users/nicolai/Dropbox/BBB Trombone/Dansemappe-trombone"'
+alias bbbvoc='open "/Users/nicolai/Dropbox/BBB Vokal/Dansemappe - Vokal"'
+
 # It's effing impossible to know what tags are available
 # on container images hosted on gcr.io, so here's an alias
 gcr() {
