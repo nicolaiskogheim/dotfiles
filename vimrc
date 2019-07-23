@@ -195,13 +195,13 @@ Plug 'junegunn/limelight.vim',   { 'on' : 'Limelight' }
 let g:limelight_conceal_ctermfg = 240
 " }}}
 " Plug 'fmoralesc/vim-tutor-mode', { 'on' : 'Tutor' }
-" Plug 'joshhartigan/vim-reddit',  { 'on' : 'Reddit' } " Browse reddit
-Plug 'tmux-plugins/vim-tmux'                         " Everything for .tmux.conf
-Plug 'tmux-plugins/vim-tmux-focus-events'            " Fixes issues with focus events
-Plug 'tpope/vim-repeat'                              " Enhance the dot-command
-Plug 'tpope/vim-speeddating'                         " Work with dates
+" Plug 'joshhartigan/vim-reddit',  { 'on' : 'Reddit' }   " Browse reddit
+Plug 'tmux-plugins/vim-tmux'                             " Everything for .tmux.conf
+Plug 'tmux-plugins/vim-tmux-focus-events'                " Fixes issues with focus events
+Plug 'tpope/vim-repeat'                                  " Enhance the dot-command
+Plug 'tpope/vim-speeddating'                             " Work with dates
 Plug 'xolox/vim-misc'
-Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }    " Use w3m in vim
+Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }        " Use w3m in vim
 
 " Static analysis
 Plug 'scrooloose/syntastic'                 " Syntax checking
