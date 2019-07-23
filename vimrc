@@ -149,7 +149,7 @@ Plug 'junegunn/vim-easy-align'                " Align text
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" Start interactive EasyAlign for a motion/text object (e.g. <leader>gaip)
 nmap <leader>ga <Plug>(EasyAlign)
 " }}}
 Plug 'justinmk/vim-dirvish'                   " # Directory viewer
