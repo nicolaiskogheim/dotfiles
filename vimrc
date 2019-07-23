@@ -203,6 +203,10 @@ Plug 'tpope/vim-speeddating'                             " Work with dates
 Plug 'xolox/vim-misc'
 Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }        " Use w3m in vim
 Plug 'https://github.com/editorconfig/editorconfig-vim', " Makes Vim respect .editorconfig
+Plug 'kannokanno/previm', { 'for' : ['markdown'] }     " Preview for markdown, rst, and mermaid
+" previm options {{{
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+" }}}
 
 " Static analysis
 Plug 'scrooloose/syntastic'                 " Syntax checking
