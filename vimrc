@@ -209,6 +209,9 @@ let g:previm_open_cmd = 'open -a Google\ Chrome'
 " }}}
 
 " Static analysis
+Plug 'w0rp/ale'
+" Ale options {{{
+nnoremap <localleader>a :ALEToggle<CR>
 " }}}
 
 " Plug 'scrooloose/syntastic'                 " Syntax checking
