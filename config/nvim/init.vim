@@ -215,6 +215,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         nnoremap <localleader>af :ALEFix<CR>
         let g:ale_fix_on_save = 0
         let g:ale_fixers = { 'php': ['prettier'] }
+        " Enable completion where available.
+        let g:ale_completion_enabled = 1
     " }}}
     Plug 'nacitar/a.vim', { 'for' : ['c', 'cpp'] } " Helpers for opening related files (ish).
                                                    "Supports more languages than I selected.
