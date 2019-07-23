@@ -64,17 +64,11 @@ BASE16_SHELL="${HOME}/.base16-seti.dark.sh"
 
 # psql -h dbpg-ifi-kurs -U nicolai
 
-function TRAPUSR1() {
-  RPROMPT="$(date)"
+local ret_status="%(?::%{$fg_bold[red]%}➜ %s)"
+PROMPT='${ret_status}%{$fg_bold[green]%}%p%{$fg[cyan]%}%c %{$reset_color%}'
+RPROMPT="\$(git-radar --zsh --fetch) "
+export GIT_RADAR_COLOR_BRANCH="$fg_bold[blue]"
 
-  # redisplay
-  export GIT_RADAR_REDRAW=true
-  zle && zle reset-prompt
-  export GIT_RADAR_REDRAW=false
-}
-
-export GIT_RADAR_ZSH_PID="$(echo $$)"
-export GIT_RADAR_ASYNC_EXEC=true
 
 if ! zgen saved; then
 
