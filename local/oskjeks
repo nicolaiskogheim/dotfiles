@@ -57,6 +57,12 @@ if command -v brew >/dev/null 2>&1 ; then
     PATH="$(brew --prefix)/sbin:$PATH"
 fi
 
+# Completion scripts which doesn't have anywhere else to live
+if [ -d "$HOME/completion/" ]
+then
+    source "$HOME"/completion/*
+fi
+
 # Dinghy
 export DOCKER_HOST=tcp://192.168.99.100:2376
 export DOCKER_CERT_PATH=/Users/nicolai/.docker/machine/machines/dinghy
