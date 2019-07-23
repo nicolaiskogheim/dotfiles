@@ -422,10 +422,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 """""" Colorschemes {{{
     Plug 'morhetz/gruvbox'
-    Plug 'junegunn/seoul256.vim'
-    Plug 'trusktr/seti.vim'
+    " Plug 'junegunn/seoul256.vim'
+    " Plug 'trusktr/seti.vim'
     Plug 'nanotech/jellybeans.vim'
-    Plug '~/.vim/plugged/lettuce.vim'
+    " Plug '~/.vim/plugged/lettuce.vim'
     Plug 'NLKNguyen/papercolor-theme'
 " }}}
 
