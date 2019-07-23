@@ -422,7 +422,7 @@ set autoindent
 set diffopt+=vertical
 set encoding=utf-8
 set expandtab
-set foldopen=insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional default: block
+set foldopen=insert,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional default: block,jump
 set ignorecase
 set incsearch
 set laststatus=2
