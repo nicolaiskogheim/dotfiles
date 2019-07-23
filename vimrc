@@ -209,64 +209,66 @@ let g:previm_open_cmd = 'open -a Google\ Chrome'
 " }}}
 
 " Static analysis
-Plug 'scrooloose/syntastic'                 " Syntax checking
-" {{{ syntastic options
-let g:syntastic_loc_list_height=3
-let g:syntastic_c_checkers = ['make']
-let g:syntastic_c_compiler="make"
-" let g:syntastic_c_compiler_options="-Wall -Wextra -std=gnu99 -Wconversion -Wpedantic"
-" OS flags
-let g:syntastic_c_compiler_options="-DLINUX_SIM=1 -Wall -Wextra -std=gnu99 -Wconversion -Wpedantic -nostartfiles -fno-defer-pop -Wno-implicit-function-declaration -fno-stack-protector -melf_i386 -N"
-let g:syntastic_enable_signs=1              " mark syntax errors with :signs
-let g:syntastic_auto_jump=0                 " automatically jump to the error when saving the file
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
-let g:syntastic_check_on_wq = 0
-let g:syntastic_java_javac_config_file_enabled = 1
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-
-" I can't handle fucking crates
-" let g:syntastic_rust_checkers = ['rustc']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-
-" Make syntastic not complain about ionic-html {{{
-let g:syntastic_html_tidy_blocklevel_tags = [
-  \'ion-checkbox',
-  \'ion-content',
-  \'ion-delete-button',
-  \'ion-footer-bar',
-  \'ion-header-bar',
-  \'ion-infinite-scroll',
-  \'ion-item',
-  \'ion-list',
-  \'ion-modal-view',
-  \'ion-nav-back-button',
-  \'ion-nav-bar',
-  \'ion-nav-buttons',
-  \'ion-nav-view',
-  \'ion-option-button',
-  \'ion-pane',
-  \'ion-popover-view',
-  \'ion-radio',
-  \'ion-refresher',
-  \'ion-reorder-button',
-  \'ion-scroll',
-  \'ion-side-menu',
-  \'ion-side-menus',
-  \'ion-side-menu-content',
-  \'ion-slide',
-  \'ion-slide-box',
-  \'ion-tab',
-  \'ion-tabs',
-  \'ion-toggle',
-  \'ion-view',
-  \]
 " }}}
 
+" Plug 'scrooloose/syntastic'                 " Syntax checking
+" " {{{ syntastic options
+" let g:syntastic_loc_list_height=3
+" let g:syntastic_c_checkers = ['make']
+" let g:syntastic_c_compiler="make"
+" " let g:syntastic_c_compiler_options="-Wall -Wextra -std=gnu99 -Wconversion -Wpedantic"
+" " OS flags
+" let g:syntastic_c_compiler_options="-DLINUX_SIM=1 -Wall -Wextra -std=gnu99 -Wconversion -Wpedantic -nostartfiles -fno-defer-pop -Wno-implicit-function-declaration -fno-stack-protector -melf_i386 -N"
+" let g:syntastic_enable_signs=1              " mark syntax errors with :signs
+" let g:syntastic_auto_jump=0                 " automatically jump to the error when saving the file
+" let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_java_javac_config_file_enabled = 1
+" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+"
+" let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+"
+" " I can't handle fucking crates
+" " let g:syntastic_rust_checkers = ['rustc']
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+"
+" " Make syntastic not complain about ionic-html {{{
+" let g:syntastic_html_tidy_blocklevel_tags = [
+"   \'ion-checkbox',
+"   \'ion-content',
+"   \'ion-delete-button',
+"   \'ion-footer-bar',
+"   \'ion-header-bar',
+"   \'ion-infinite-scroll',
+"   \'ion-item',
+"   \'ion-list',
+"   \'ion-modal-view',
+"   \'ion-nav-back-button',
+"   \'ion-nav-bar',
+"   \'ion-nav-buttons',
+"   \'ion-nav-view',
+"   \'ion-option-button',
+"   \'ion-pane',
+"   \'ion-popover-view',
+"   \'ion-radio',
+"   \'ion-refresher',
+"   \'ion-reorder-button',
+"   \'ion-scroll',
+"   \'ion-side-menu',
+"   \'ion-side-menus',
+"   \'ion-side-menu-content',
+"   \'ion-slide',
+"   \'ion-slide-box',
+"   \'ion-tab',
+"   \'ion-tabs',
+"   \'ion-toggle',
+"   \'ion-view',
+"   \]
+" " }}}
+"
 " }}}
 
 " Vim mappings
