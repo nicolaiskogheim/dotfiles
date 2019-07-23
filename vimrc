@@ -202,6 +202,7 @@ Plug 'tpope/vim-repeat'                                  " Enhance the dot-comma
 Plug 'tpope/vim-speeddating'                             " Work with dates
 Plug 'xolox/vim-misc'
 Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }        " Use w3m in vim
+Plug 'https://github.com/editorconfig/editorconfig-vim', " Makes Vim respect .editorconfig
 
 " Static analysis
 Plug 'scrooloose/syntastic'                 " Syntax checking
