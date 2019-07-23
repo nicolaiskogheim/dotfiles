@@ -328,7 +328,7 @@ Plug 'nicolaiskogheim/vim-snippets'
 Plug 'sheerun/vim-polyglot'                             " Language packs
 Plug 'vim-jp/vim-java'           , { 'for' : 'java' }   " Java highlighting
 " Plug 'amdt/vim-niji'             , { 'for' : 'scheme' } " Rainbow parenthesis for Scheme etc.
-Plug 'bling/vim-airline'                                " Statusline
+" Plug 'bling/vim-airline'                                " Statusline
 " {{{ airline options
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled=1
