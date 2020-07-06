@@ -47,9 +47,11 @@ cmap w!! w !sudo tee % >/dev/null
 " Mappings for copying to clipboard
 if executable('pbcopy')
     nnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
+    nnoremap <silent> <localleader>u :w !nc -c localhost 8082<CR><CR>
     " :w only writes whole lines, so we have to do some magic here.
     " And we go through `head --bytes=-1` to remove the added newline.
 	xnoremap <localleader>y y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| pbcopy<CR><CR>:bdelete!<CR>
+	xnoremap <localleader>u y:split ~/tmpclipboard_uniquenamehere18285<CR>P:w !head --bytes=-1 \| nc -c localhost 8082<CR><CR>:bdelete!<CR>
 elseif executable('xsel')
     nnoremap <silent> <localleader>y :w !xsel -i -b<CR><CR>
     " :w only writes whole lines, so we have to do some magic here.
