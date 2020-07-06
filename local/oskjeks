@@ -76,15 +76,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GIT_PROMPT_ONLY_IN_REPO=1
 #GIT_PROMPT_SHOW_LAST_COMMAND_INDICATOR=1
 
-# GVM
-
-# wrap this in function so I can call it at the bottom of the file
-gvm_init() {
-    #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-    export GVM_DIR="/Users/nicolai/.gvm"
-    [[ -s "$GVM_DIR/bin/gvm-init.sh" ]] && source "$GVM_DIR/bin/gvm-init.sh"
-}
-
 # OSX
 if [ "$(uname -s)" = "Darwin" ] ; then
     # Decrease animation duration when using expose
@@ -169,7 +160,3 @@ PATH="$HOME/bin::$PATH"
 # # shellcheck disable=SC1091
 # # shellcheck source=/Users/nicolai/bin/getKeyboardLayout.sh
 # source "$HOME/bin/getKeyboardLayout.sh"
-
-
-# See definition further up, for explanation
-gvm_init
