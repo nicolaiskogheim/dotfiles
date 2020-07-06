@@ -76,7 +76,6 @@ if ! zgen saved; then
 
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/fasd
-  zgen oh-my-zsh plugins/heroku
   zgen oh-my-zsh plugins/pip
   zgen oh-my-zsh plugins/docker
   zgen load zsh-users/zsh-completions src
@@ -84,14 +83,14 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/vi-mode
   #zgen load command-not-found
   #zgen load autoenv
-  zgen oh-my-zsh plugins/gradle
+  # zgen oh-my-zsh plugins/gradle
   zgen oh-my-zsh plugins/archlinux
 
   zgen load Lokaltog/powerline
   zgen oh-my-zsh plugins/colored-man-pages
   zgen load chrissicool/zsh-256color
   # zgen oh-my-zsh themes/robbyrussell
-  zgen load nicolaiskogheim/prompt prompt
+  # zgen load nicolaiskogheim/prompt prompt
   zgen load noh4ck/zenv
 
   # Must be after plugins and compinit
