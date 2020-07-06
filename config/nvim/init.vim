@@ -155,6 +155,8 @@ fun! CallInterpreter()
   endif
 endfun
 " }}}
+" TODO(nicolai): This should probably use <buffer> <localleader>x instead
+" because it is file specific
 map <leader>x :call CallInterpreter()<CR>
 " }}}
 
