@@ -355,6 +355,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         let g:gist_detect_filetype = 1
         let g:gist_post_private = 1
     " }}}
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
     " Integrating with pane managers is not only only! But, but.
     " If this works, you should be able to navigate seamlessly through panes
