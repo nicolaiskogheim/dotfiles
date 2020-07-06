@@ -503,11 +503,15 @@ call plug#end()
 augroup filetype_sensitive
     autocmd!
     autocmd FileType yaml setl shiftwidth=2
+
+    autocmd FileType elm inoremap <buffer> <C-l> <C-R>="-> "<C-M>
 augroup END
 
 
 """""""""" Color Scheme (must be after plugins that install colors chemes)
-colorscheme PaperColor
+colorscheme jellybeans
+set termguicolors
+" colorscheme PaperColor
 let g:gruvbox_contrast_dark="hard"
 set background=dark
 
