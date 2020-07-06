@@ -490,7 +490,8 @@ call plug#begin('~/.local/share/nvim/plugged')
                                                         " using it
 
 
-Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+" Plug 'mdempsky/gocode', { 'for': 'go', 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
 
 
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
