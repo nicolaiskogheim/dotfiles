@@ -213,16 +213,45 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'xolox/vim-misc'                                    " Dependency for other plugins
     Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }        " Use w3m in vim
     Plug 'https://github.com/editorconfig/editorconfig-vim', " Makes Vim respect .editorconfig
-    Plug 'w0rp/ale'                                          " Asynchonous statis analysis
-    " Ale options {{{
-        " I turn Ale off sometimes if neovim becomes sluggish
-        nnoremap <localleader>at :ALEToggle<CR>
-        nnoremap <localleader>af :ALEFix<CR>
-        let g:ale_fix_on_save = 0
-        let g:ale_fixers = { 'php': ['prettier'] }
-        " Enable completion where available.
-        let g:ale_completion_enabled = 1
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+    " {{{
+        " Use <c-space> to trigger completion.
+        inoremap <silent><expr> <c-space> coc#refresh()
+
+        " Use `[g` and `]g` to navigate diagnostics
+        nmap <silent> [g <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+        " Remap keys for gotos
+        nmap <silent> <C-]> <Plug>(coc-definition)
+        nmap <silent> g<C-]> <Plug>(coc-type-definition)
+        " nmap <silent> gi <Plug>(coc-implementation)
+        " nmap <silent> gr <Plug>(coc-references)
+
+        " Use K to show documentation in preview window
+        nnoremap <silent> K :call <SID>show_documentation()<CR>
+        function! s:show_documentation()
+            if (index(['vim','help'], &filetype) >= 0)
+                execute 'h '.expand('<cword>')
+            else
+                call CocAction('doHover')
+            endif
+        endfunction
     " }}}
+    Plug 'neoclide/coc-neco'
+
+    " Plug 'w0rp/ale'                                          " Asynchonous statis analysis
+    " " Ale options {{{
+    "     " I turn Ale off sometimes if neovim becomes sluggish
+    "     nnoremap <localleader>at :ALEToggle<CR>
+    "     nnoremap <localleader>af :ALEFix<CR>
+    "     let g:ale_fix_on_save = 0
+    "     let g:ale_fixers = { 'php': ['prettier'] }
+    "     " let g:ale_linters = { 'sh': ['language_server'], 'golang': ['gopls'] }
+    "     " Enable completion where available.
+    "     let g:ale_completion_enabled = 1
+    " " }}}
+
     Plug 'nacitar/a.vim', { 'for' : ['c', 'cpp'] } " Helpers for opening related files (ish).
                                                    "Supports more languages than I selected.
     Plug 'mhinz/vim-startify'
