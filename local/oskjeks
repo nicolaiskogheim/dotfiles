@@ -77,14 +77,12 @@ export GIT_PROMPT_ONLY_IN_REPO=1
 #GIT_PROMPT_SHOW_LAST_COMMAND_INDICATOR=1
 
 # OSX
-if [ "$(uname -s)" = "Darwin" ] ; then
-    # Decrease animation duration when using expose
-    wanted_duration="0.2"
-    current_duration="$(defaults read com.apple.dock expose-animation-duration)"
+# Decrease animation duration when using expose
+wanted_duration="0.2"
+current_duration="$(defaults read com.apple.dock expose-animation-duration)"
 
-    if [ "$current_duration" != "$wanted_duration" ] ; then
-        defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
-    fi
+if [ "$current_duration" != "$wanted_duration" ] ; then
+    defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
 fi
 
 
