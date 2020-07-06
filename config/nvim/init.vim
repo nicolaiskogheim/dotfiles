@@ -96,6 +96,7 @@ set softtabstop=4
 set tabstop=4
 set wildmode=list:longest
 set wrapmargin=0
+set signcolumn=yes
 
 " File patterns to ignore {{{
 set wildignore+=node_modules
