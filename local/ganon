@@ -20,18 +20,38 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Add my local bin to PATH
+# Add my local bin to front of PATH for highest priority so I can override any
+# command from that folder.
 PATH="${HOME}/bin:${PATH}"
+# Add a bunch of google commands to path. I didn't want to dump everything in
+# ~/bin
+export PATH="$PATH:${HOME}/bin/google_appengine/"
 # Add screenlayout scripts to path
 PATH="${HOME}/.screenlayout:${PATH}"
 # Add gobin to path
 PATH="${HOME}/go/bin:${PATH}"
 export PATH
 
+# Android stuff
+PATH="${PATH}:${HOME}/Android/Sdk/emulator"
+PATH="${PATH}:${HOME}/Android/Sdk/platform-tools"
+PATH="${PATH}:${HOME}/Android/Sdk/tools"
+# PATH="${PATH}:${HOME}/Android/Sdk/tools/bin/"
+export ANDROID_HOME="$HOME/Android/Sdk"
+
 GOPATH="/home/nicolai/go"
 export GOPATH
 GOROOT="/usr/lib/go"
 export GOROOT
+
+# Composer
+PATH="${PATH}:${HOME}/.config/composer/vendor/bin"
+
+# Yarn
+PATH="$HOME/.yarn/bin:$PATH"
+
+
+export JAVA_HOME="/usr/lib/jvm/default"
 
 # Like EDITOR, but for Arch
 export VISUAL=vim
@@ -73,6 +93,10 @@ then
     printf >&2 "\tsystemctl enable ssh-agent.service --user\n"
     printf >&2 "\tsystemctl start ssh-agent.service --user\n"
 fi
+
+# Aliases
+
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # Functions below 
 

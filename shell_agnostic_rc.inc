@@ -13,6 +13,10 @@ alias wow='git status'
 # $ very push
 # sorrynotsorry
 
+function rfc() {
+    less -FXRS "/usr/share/doc/rfc/txt/rfc${1}.txt"
+}
+
 pdfjoin() {
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=${@}
 }
@@ -30,6 +34,30 @@ folder_count() {
     fi
     find "${location}" -xdev -type f | cut -d "/" -f 2 | sort | uniq -c | sort -n
 }
+
+# example usage:
+# topofminute date -u "+%+"
+# Stolen verbatim from:
+# https://gist.github.com/dzuelke/5cd7e4772120ba098a8427e1efbc61a9
+topofminute() {
+	local now;
+	
+	while true; do
+		now=$(date "+%S")
+		now=${now#0} # strip leading zero for arithmetic operations
+		
+		# run command only if less than ten seconds have passed in the current minute
+		if [[ "$now" -le 10 ]]; then
+			# run command in the background
+			"$@" &
+		fi
+		
+		# echo "sleeping for $((61-now)) seconds..."
+		
+		sleep $((61-now))
+	done
+}
+
 
 #  So as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 #  The default (legacy) behaviour of Ctrl-S is to stop
@@ -63,6 +91,11 @@ which cal 1>/dev/null 2>&1 && \
 #+ is used will be the name of the directory
 mc() {
     mkdir -p "$*" && cd "$*" || exit
+}
+
+# Move Newest Download Here
+mndh() {
+    mv "$(ls -dt ~/Downloads/* | head -1)" .
 }
 
 

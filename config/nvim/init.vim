@@ -44,6 +44,10 @@ nnoremap <silent> <localleader>e :Ex<CR>
 nnoremap <silent> <localleader>b :bd \| bn<CR>
 cmap w!! w !sudo tee % >/dev/null
 
+nnoremap <silent> <leader>r V:retab<CR>
+xnoremap <silent> <leader>r :retab<CR>
+
+
 " Mappings for copying to clipboard
 if executable('pbcopy')
     nnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
@@ -57,6 +61,8 @@ elseif executable('xsel')
     " :w only writes whole lines, so we have to do some magic here.
     " And we go through `head --bytes=-1` to remove the added newline.
 	xnoremap <localleader>y y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| xsel -i -b<CR><CR>:bdelete!<CR>
+	xnoremap <localleader>u y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| nc -c localhost 8083<CR><CR>:bdelete!<CR>
+	onoremap <localleader>y y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| xsel -i -b<CR><CR>:bdelete!<CR>
 endif
 
 " Persist flags in substitute-commend shortcut
@@ -88,15 +94,19 @@ set ignorecase
 set modelines=2
 set noequalalways  " Never resize panes when splitting
 set number
-set shiftwidth=4
+set shiftwidth=2
 set showfulltag
 set showmatch
 set smartcase
-set softtabstop=4
-set tabstop=4
+set softtabstop=2
+set tabstop=2
 set wildmode=list:longest
 set wrapmargin=0
 set signcolumn=yes
+
+if exists("&wildignorecase")
+    set wildignorecase
+endif
 
 " File patterns to ignore {{{
 set wildignore+=node_modules
@@ -307,6 +317,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-fugitive'                " Everything git from inside neovim
     " {{{ fugitive options
     nnoremap <silent> <localleader>gs :Gstatus<CR>
+    nnoremap <silent> <localleader>gd :Gdiff<CR>
+    nnoremap <silent> <localleader>gb :Gblame<CR>
+    nnoremap <silent> <localleader>gc :Gcommit<CR>
     " }}}
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -460,11 +473,19 @@ call plug#begin('~/.local/share/nvim/plugged')
     """ Html template languages
     Plug 'jwalton512/vim-blade'      , { 'for' : 'blade' }  " Blade highlighting
     Plug 'plasticboy/vim-markdown' , { 'for' : 'markdown' } " Markdown highlighting
+    " vim-markdown options {{{
+    let g:vim_markdown_folding_disabled = 1
+    " }}}
     Plug 'mustache/vim-mustache-handlebars' , { 'for' : 'mustache' } " Mustache and handlebars highlighting
     Plug 'kannokanno/previm', { 'for' : ['markdown'] }     " Preview for markdown, rst, and mermaid
     " previm options {{{
     let g:previm_open_cmd = 'open -a Google\ Chrome'
     " }}}
+    """ React related
+    Plug 'pangloss/vim-javascript' " JavaScript bundle. Provides syntax highlighting and improved indentation.
+    Plug 'leafgarland/typescript-vim' " Typescript highlighting. Dependency of maxmellon/vim-jsx-pretty.
+    Plug 'maxmellon/vim-jsx-pretty' " React syntax highlighting and indenting. Also supports typescript.
+    Plug 'Quramy/tsuquyomi' " 'Make your Vim a TypeScript IDE'.
 " }}}
 
 """""" Snippets {{{

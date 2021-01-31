@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
 
 " I plan to check these out:
 " unblevable/quick-scope
+" zef/vim-cycle
 " rstacruz/vim-closer
 " vim-obsession
 " vim-eunuch
@@ -149,7 +150,7 @@ Plug 'junegunn/vim-easy-align'                " Align text
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
-" Start interactive EasyAlign for a motion/text object (e.g. <leader>gaip)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap <leader>ga <Plug>(EasyAlign)
 " }}}
 Plug 'justinmk/vim-dirvish'                   " # Directory viewer
@@ -422,7 +423,7 @@ set autoindent
 set diffopt+=vertical
 set encoding=utf-8
 set expandtab
-set foldopen=insert,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional default: block,jump
+set foldopen=insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds //Additional default: block
 set ignorecase
 set incsearch
 set laststatus=2
@@ -442,6 +443,10 @@ set ttyfast
 set wildmenu
 set wildmode=list:longest
 set wrapmargin=0
+
+if exists("&wildignorecase")
+    set wildignorecase
+endif
 
 " set timeout timeoutlen=200 ttimeoutlen=200
 
@@ -478,8 +483,9 @@ nnoremap <localleader>w :w<CR>
 nnoremap <leader>q :!ql %<CR>
 nnoremap <leader>l :source $MYVIMRC<cr>:echom "Reloaded $MYVIMRC"<cr>
 nnoremap <leader>d :redraw!<CR>
-vnoremap <silent> <localleader>y :w !pbcopy<cr>
-nnoremap <silent> <localleader>y :w !pbcopy<cr>
+vnoremap <localleader>y :w !pbcopy<cr>
+nnoremap <localleader>y :w !pbcopy<cr>
+nmap <C-å> <ESC>
 
 cmap w!! w !sudo tee % >/dev/null
 
@@ -549,6 +555,9 @@ augroup autocommands
     "                                                  \ && open %:r.pdf<cr>
 
 
+    " diff
+    autocmd FileType diff setlocal list
+    autocmd FileType diff nnoremap <localleader>r :g/^+/.retab\|s/\s\+$//e<CR>
 
     " bats
     autocmd BufRead,BufNewFile *.bats        set filetype=sh
@@ -612,6 +621,9 @@ nnoremap <LEADER>cti :call WildignoreFromGitignore()<cr>
 nnoremap <LEADER>cwi :set wildignore=''<cr>:echo 'Wildignore cleared'<cr>
 
 nnoremap <localleader>m :set foldmethod=marker<CR>
+
+nnoremap <silent> <localleader>r V:retab<CR>
+xnoremap <silent> <localleader>r :retab<CR>
 
 if executable('keyboard-leds') " {{{
 	augroup keyboard_leds

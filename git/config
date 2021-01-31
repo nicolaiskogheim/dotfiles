@@ -60,6 +60,7 @@
     exec = !exec
     edit-modified = !nvim `git ls-files -m` -p # -p = Open one tab per file
     edit-untracked = !nvim `git ls-files --other --exclude-standard`
+    edit-conflicted = !nvim `git diff --name-only --diff-filter=U`
 
   # Submodule
     sinit = submodule init
