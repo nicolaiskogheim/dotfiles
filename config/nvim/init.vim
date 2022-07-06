@@ -397,6 +397,10 @@ call plug#begin('~/.local/share/nvim/plugged')
         nnoremap <silent> <c-f> :call Focus('right', 'l')<CR>
     endif
     Plug 'https://github.com/thiderman/vim-supervisor'        " Supervisor wrapper
+    Plug 'jbyuki/instant.nvim'
+    " {{{
+    let g:instant_username = "nico"
+    "}}}
 " }}}
 
 """""" Language specific {{{
