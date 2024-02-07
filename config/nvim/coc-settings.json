@@ -1,0 +1,53 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python"
+  ],
+  "languageserver": {
+    "csharp-ls": {
+      "command": "csharp",
+      "filetypes": ["cs"],
+      "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "elmAnalyseTrigger": "change",
+        "elmPath": "elm",
+        "elmFormatPath": "elm-format",
+        "elmTestPath": "elm-test"
+      }
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    },
+  },
+  "codeLens.enable": true,
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "email": "languagetool",
+    "markdown": ["write-goo", "markdownlint", "redpen"],
+    "sh": ["shellcheck -x", "shellharden"],
+    "elixir": ["mix_credo", "mix_credo_compile"],
+    "eelixir": ["mix_credo", "mix_credo_compile"],
+    "php": "phpcs"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "dart": "dartfmt",
+    "elixir": "mix_format",
+    "eelixir": "mix_format"
+  },
+  "tsserver.npm": "/home/nicolai/.yarn/bin/npm",
+  "yaml.schemas": {
+    "helm": "/values.yaml",
+    "kubernetes": "/*.yaml"
+  }
+}
