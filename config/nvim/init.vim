@@ -1,6 +1,7 @@
 " vim:foldmethod=marker
 
 " TODO(nicolai):
+" https://vim.fandom.com/wiki/Cleanup_your_HTML
 " Decide what/how to do with ranger
 " https://github.com/ranger/ranger
 " https://github.com/Mizuchi/vim-ranger
@@ -9,7 +10,7 @@
 " TODO(nicolai): Figure out if this pgsql plugin is any good
 " https://github.com/lifepillar/pgsql.vim
 
-" This machine needs to be told where pyton is
+" This machine needs to be told where python is
 if $HOST=="ganon"
     let g:python3_host_prog='/usr/bin/python'
 endif
@@ -51,13 +52,14 @@ xnoremap <silent> <leader>r :retab<CR>
 " Mappings for copying to clipboard
 if executable('pbcopy')
     nnoremap <silent> <localleader>y :w !pbcopy<CR><CR>
-    nnoremap <silent> <localleader>u :w !nc -c localhost 8082<CR><CR>
+    nnoremap <silent> <localleader>u :w !nc -c localhost 8083<CR><CR>
     " :w only writes whole lines, so we have to do some magic here.
     " And we go through `head --bytes=-1` to remove the added newline.
 	xnoremap <localleader>y y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| pbcopy<CR><CR>:bdelete!<CR>
-	xnoremap <localleader>u y:split ~/tmpclipboard_uniquenamehere18285<CR>P:w !head --bytes=-1 \| nc -c localhost 8082<CR><CR>:bdelete!<CR>
+	xnoremap <localleader>u y:split ~/tmpclipboard_uniquenamehere18285<CR>P:w !head --bytes=-1 \| nc -c localhost 8083<CR><CR>:bdelete!<CR>
 elseif executable('xsel')
     nnoremap <silent> <localleader>y :w !xsel -i -b<CR><CR>
+    nnoremap <silent> <localleader>u :w !nc -c localhost 8083<CR><CR>
     " :w only writes whole lines, so we have to do some magic here.
     " And we go through `head --bytes=-1` to remove the added newline.
 	xnoremap <localleader>y y:split ~/tmpclipboard_uniquenamehere18284<CR>P:w !head --bytes=-1 \| xsel -i -b<CR><CR>:bdelete!<CR>
@@ -84,6 +86,9 @@ nmap <Left> :tabprevious<CR>
 
 """""""""" Nvim Options {{{
 
+set mouse=
+set cmdheight=2
+set hidden
 set history=3000
 set splitbelow 		" Put windows below, not above, current window when splitting
 set splitright 		" Put windows right, not left, of current window when splitting
@@ -95,14 +100,24 @@ set modelines=2
 set noequalalways  " Never resize panes when splitting
 set number
 set shiftwidth=2
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set showfulltag
 set showmatch
 set smartcase
 set softtabstop=2
 set tabstop=2
+set updatetime=300
 set wildmode=list:longest
 set wrapmargin=0
 set signcolumn=yes
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 if exists("&wildignorecase")
     set wildignorecase
@@ -213,7 +228,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 """"" Vim "extensions" {{{
     Plug 'tpope/vim-unimpaired'
     Plug 'junegunn/vim-peekaboo'                " Show registers in sidepanel
-    Plug 'majutsushi/tagbar'                    " Show tags in sidepanel
+    " {{{
+        let g:peekaboo_delay = 400
+    " }}}
+    Plug 'preservim/tagbar'                    " Show tags in sidepanel
     " {{{ tagbar options
         nmap <leader>g :TagbarToggle<CR>
         let g:tagbar_show_linenumbers = 1
@@ -223,30 +241,42 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'xolox/vim-misc'                                    " Dependency for other plugins
     Plug 'yuratomo/w3m.vim',         { 'on' : 'W3m' }        " Use w3m in vim
     Plug 'https://github.com/editorconfig/editorconfig-vim', " Makes Vim respect .editorconfig
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " {{{
-        " Use <c-space> to trigger completion.
-        inoremap <silent><expr> <c-space> coc#refresh()
+        function! s:disable_coc_for_type()
+          let l:filesuffix_blacklist = ['go']
+          if index(l:filesuffix_blacklist, expand('%:e')) != -1
+            let b:coc_enabled = 0
+          else
+            " Brings up fuzzy search over coc commands
+            nnoremap <silent><localleader>c :CocCommand<CR>
+            " Use <c-space> to trigger completion.
+            inoremap <silent><expr> <c-space> coc#refresh()
 
-        " Use `[g` and `]g` to navigate diagnostics
-        nmap <silent> [g <Plug>(coc-diagnostic-prev)
-        nmap <silent> ]g <Plug>(coc-diagnostic-next)
+            " Use `[g` and `]g` to navigate diagnostics
+            nmap <silent> [g <Plug>(coc-diagnostic-prev)
+            nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-        " Remap keys for gotos
-        nmap <silent> <C-]> <Plug>(coc-definition)
-        nmap <silent> g<C-]> <Plug>(coc-type-definition)
-        " nmap <silent> gi <Plug>(coc-implementation)
-        " nmap <silent> gr <Plug>(coc-references)
+            " Remap keys for gotos
+            nmap <silent> <C-]> <Plug>(coc-definition)
+            nmap <silent> g<C-]> <Plug>(coc-type-definition)
 
-        " Use K to show documentation in preview window
-        nnoremap <silent> K :call <SID>show_documentation()<CR>
-        function! s:show_documentation()
-            if (index(['vim','help'], &filetype) >= 0)
+            nmap <silent> <leader>cr <Plug>(coc-references-used)
+            nmap <silent> <leader>ci <Plug>(coc-implementation)
+            nmap <leader>cn <Plug>(coc-rename)
+
+            " Use K to show documentation in preview window
+            nnoremap <silent> K :call <SID>show_documentation()<CR>
+            function! s:show_documentation()
+              if (index(['vim','help'], &filetype) >= 0)
                 execute 'h '.expand('<cword>')
-            else
+              else
                 call CocAction('doHover')
-            endif
+              endif
+            endfunction
+          endif
         endfunction
+        autocmd BufRead,BufNewFile * call s:disable_coc_for_type()
     " }}}
     Plug 'neoclide/coc-neco'
 
@@ -320,6 +350,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     nnoremap <silent> <localleader>gd :Gdiff<CR>
     nnoremap <silent> <localleader>gb :Gblame<CR>
     nnoremap <silent> <localleader>gc :Gcommit<CR>
+    command! Greview :Git! diff --staged
+    nnoremap <localleader>gr :Greview<cr>
     " }}}
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
@@ -370,6 +402,11 @@ call plug#begin('~/.local/share/nvim/plugged')
     " }}}
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
+
+    Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+    let g:oscyank_term = 'tmux'
+    vnoremap <leader>c :OSCYank<CR>
+
     " Integrating with pane managers is not only only! But, but.
     " If this works, you should be able to navigate seamlessly through panes
     " and buffers alike, in both tmux and i3.
@@ -380,6 +417,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     " Plug 'edkolev/tmuxline.vim'                             " Tmux status line generator
     Plug 'tmux-plugins/vim-tmux-focus-events'               " Fixes issues with focus events
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'tpope/vim-obsession'                              " Userfriendly wrapper for :mksession
     " {{{ vim-tmux-navigator options
         let g:tmux_navigator_no_mappings = 1
     " }}}
@@ -399,8 +437,12 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'https://github.com/thiderman/vim-supervisor'        " Supervisor wrapper
     Plug 'jbyuki/instant.nvim'
     " {{{
-    let g:instant_username = "nico"
+    let g:instant_username = "nico ¯\_(ツ)_/¯ "
     "}}}
+    Plug 'aduros/ai.vim'
+    " {{{ 
+      vnoremap <silent> <leader>f :AI fix grammar and spelling and replace slang and contractions with a formal academic writing style<CR>
+    " }}}
 " }}}
 
 """""" Language specific {{{
@@ -416,6 +458,11 @@ call plug#begin('~/.local/share/nvim/plugged')
     """ Go
     Plug 'fatih/vim-go', { 'for' : ['go'], 'do': ':GoUpdateBinaries' } " For Go development
     " {{{
+        nnoremap <leader>ie :GoIfErr<CR>
+
+        nmap <silent> <C-]> :GoDef<CR>
+        " nmap <silent> g<C-]> <Plug>(coc-type-definition)
+
         let g:go_fmt_command = "goimports"
         let g:go_def_mapping_enabled = 0
         let g:go_doc_keywordprg_enabled = 0
@@ -468,19 +515,41 @@ call plug#begin('~/.local/share/nvim/plugged')
     " }}}
     """ Java
     Plug 'vim-jp/vim-java', { 'for' : 'java' }   " Java highlighting
+    """ Jinja
+    Plug 'lepture/vim-jinja' " Jinja highlighting
     """ Gradle
     Plug 'tfnico/vim-gradle', { 'for' : 'gradle'}  " Gradle highlighting
     """ JSON
     Plug 'elzr/vim-json',   { 'for' : 'json' }   " Better looking JSON
+    function! NvimNodeUpdate(args)
+        !yarn install 
+        " npm could also be yarn or pnpm
+        UpdateRemotePlugins
+    endfunction
+
+    Plug 'yanick/nvim-jq', { 'do': function('NvimNodeUpdate') }
+    """ Javascript, Typescript, less, scss, css, json, graphql, markdown.
+    Plug 'prettier/vim-prettier'
+    " {{{
+        let g:prettier#partial_format=1
+        xmap <localleader>p :PrettierPartial<CR>
+    " }}}
+    """ Yaml
+    Plug 'lmeijvogel/vim-yaml-helper', { 'for' : 'yaml' }
+    " {{{
+        let g:vim_yaml_helper#always_get_root = 1
+        let g:vim_yaml_helper#auto_display_path = 1
+    " }}}
     """ Nginx
     Plug 'chr4/nginx.vim', " Smart nginx highlighting
+    """ General (highlights insecure ciphers)
+    Plug 'chr4/sslsecure.vim'
     """ Html template languages
     Plug 'jwalton512/vim-blade'      , { 'for' : 'blade' }  " Blade highlighting
     Plug 'plasticboy/vim-markdown' , { 'for' : 'markdown' } " Markdown highlighting
     " vim-markdown options {{{
     let g:vim_markdown_folding_disabled = 1
     " }}}
-    Plug 'mustache/vim-mustache-handlebars' , { 'for' : 'mustache' } " Mustache and handlebars highlighting
     Plug 'kannokanno/previm', { 'for' : ['markdown'] }     " Preview for markdown, rst, and mermaid
     " previm options {{{
     let g:previm_open_cmd = 'open -a Google\ Chrome'
@@ -498,6 +567,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tomtom/tlib_vim'
     Plug 'garbas/vim-snipmate'
     Plug 'nicolaiskogheim/vim-snippets'
+    let g:snipMate = { 'snippet_version' : 1 }
 " /end snipmate
 " }}}
 
@@ -517,6 +587,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Plug 'mdempsky/gocode', { 'for': 'go', 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+let g:go_gocode_propose_source=1
 
 
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -529,7 +600,11 @@ augroup filetype_sensitive
     autocmd!
     autocmd FileType yaml setl shiftwidth=2
 
+    autocmd FileType php inoremap <buffer> <C-l> <C-R>="=> "<C-M>
+
     autocmd FileType elm inoremap <buffer> <C-l> <C-R>="-> "<C-M>
+    autocmd FileType typescript setlocal nobackup
+    autocmd FileType typescript setlocal nowritebackup
 augroup END
 
 
