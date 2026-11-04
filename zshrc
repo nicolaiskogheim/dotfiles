@@ -80,7 +80,6 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/vi-mode
   #zgen load command-not-found
   #zgen load autoenv
-  # zgen oh-my-zsh plugins/gradle
   zgen oh-my-zsh plugins/archlinux
 
   zgen load Lokaltog/powerline
