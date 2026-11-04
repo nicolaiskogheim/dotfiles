@@ -116,3 +116,24 @@
 	fetchJobs = 4
 [hub]
 	protocol = ssh
+
+
+# The above are considered defaults, but some are expected to be overwritten by
+# configuration sitting closer to the repositories. For the other, overriding,
+# configurations to work, they must be included after, and in reverse order of
+# presedence, i.e. closest last.
+
+# Different machines means different signing keys, and possibly different
+# defaults for user.email and credential.helper. These can go in the local git
+# config.
+[include]
+  path = ~/.gitconfig.local
+
+[includeIf "gitdir:~/Github/work/"]
+    path = ~/Github/work/.gitconfig
+
+[includeIf "gitdir:~/Github/private/"]
+    path = ~/Github/private/.gitconfig
+
+[includeIf "gitdir:~/Github/other/"]
+    path = ~/Github/other/.gitconfig
