@@ -1,0 +1,27 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# bin installed through go
+PATH="${HOME}/go/bin:${PATH}"
+
+# Add cargo bins
+PATH="${HOME}/.cargo/bin/:${PATH}"
+
+# Add my local bin to front of PATH for highest priority so I can override any
+# command from that folder.
+PATH="${HOME}/bin:${HOME}/bin/kubernetes:${PATH}"
+
+# The talos folder has some tools for working with our talos clusters
+PATH="${HOME}/bin/talos:${PATH}"
+
+# Krew was installed manually, and has its own bins in its own directory
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+source ~/.ssh-agent
+
+# asdf
+PATH="${HOME}/.asdf/shims:${PATH}"
+
+PATH="${HOME}/.yarn/bin/:${PATH}"
+
+export PATH
