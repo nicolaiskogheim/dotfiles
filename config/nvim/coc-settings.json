@@ -22,13 +22,10 @@
     "terraform": {
       "command": "terraform-ls",
       "args": ["serve"],
-      "filetypes": [
-        "terraform",
-        "tf"
-      ],
+      "filetypes": ["terraform", "tf"],
       "initializationOptions": {},
       "settings": {}
-    },
+    }
   },
   "codeLens.enable": true,
   "diagnostic-languageserver.filetypes": {
