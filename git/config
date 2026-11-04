@@ -111,3 +111,5 @@
     rebase = true
 [submodule]
 	fetchJobs = 4
+[hub]
+	protocol = ssh
