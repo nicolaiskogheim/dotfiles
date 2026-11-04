@@ -404,7 +404,10 @@ call plug#begin('~/.local/share/nvim/plugged')
         let g:gist_detect_filetype = 1
         let g:gist_post_private = 1
     " }}}
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+    Plug 'jannis-baum/vivify.vim'
+    " {{{ vivify options
+      let g:vivify_instant_refresh = 1
+    " }}}
 
 
     Plug 'ojroques/vim-oscyank', {'branch': 'main'}
