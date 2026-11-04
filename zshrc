@@ -1,14 +1,12 @@
 #The following lines were added by compinstall
 zstyle :compinstall filename '/Users/nicolai/.zshrc'
 
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 zmodload zsh/complist
-autoload -U compinit
+autoload -Uz compinit
 compinit -u
 autoload bashcompinit
 bashcompinit
