@@ -422,7 +422,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     " Plug 'jwilm/i3-vim-focus'
     Plug 'tmux-plugins/vim-tmux'                            " Everything for .tmux.conf
     " Plug 'edkolev/tmuxline.vim'                             " Tmux status line generator
-    Plug 'tmux-plugins/vim-tmux-focus-events'               " Fixes issues with focus events
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'tpope/vim-obsession'                              " Userfriendly wrapper for :mksession
     " {{{ vim-tmux-navigator options
