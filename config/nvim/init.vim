@@ -205,6 +205,10 @@ augroup END
 """"""""" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+"""""" Neovim API plugins {{{
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"""""" }}}
+
 """""" For working with text {{{
     Plug 'junegunn/vim-easy-align'
     " {{{
