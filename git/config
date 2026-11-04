@@ -104,6 +104,7 @@
     required = true
 [commit]
     template = ~/.gitmessage
+    gpgsign = true
 [merge]
     tool = vimdiff
     conflictstyle = diff3
