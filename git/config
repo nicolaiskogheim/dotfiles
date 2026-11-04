@@ -1,4 +1,6 @@
 # vim:ft=gitconfig
+[init]
+	defaultBranch = main
 [user]
     name = Nicolai Skogheim
     email = nicolai.skogheim@gmail.com
