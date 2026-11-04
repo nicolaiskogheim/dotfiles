@@ -541,11 +541,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         xmap <localleader>p :PrettierPartial<CR>
     " }}}
     """ Yaml
-    Plug 'lmeijvogel/vim-yaml-helper', { 'for' : 'yaml' }
-    " {{{
-        let g:vim_yaml_helper#always_get_root = 1
-        let g:vim_yaml_helper#auto_display_path = 1
-    " }}}
+
     """ Nginx
     Plug 'chr4/nginx.vim', " Smart nginx highlighting
     """ General (highlights insecure ciphers)
