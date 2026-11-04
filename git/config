@@ -75,7 +75,7 @@
     smudge = git media smudge %f
 [core]
     pager = less -FXRS
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore
     precomposeunicode = true
 [push]
