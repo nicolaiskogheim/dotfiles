@@ -1,6 +1,8 @@
 #!/bin/bash
 # vim:ft=sh
 
+export GPG_TTY=$(tty)
+
 alias ="echo omnomnom"
 alias mkdrit=mkdir
 alias nah='git reset --hard && git clean -df'
