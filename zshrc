@@ -7,7 +7,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 zmodload zsh/complist
 autoload -Uz compinit
-compinit -u
+compinit
 autoload bashcompinit
 bashcompinit
 zstyle ':completion:*' show-ambiguity true
