@@ -17,8 +17,6 @@ colors
 zstyle ':completion:*' show-ambiguity "1;2;$color[fg-red]"
 
 zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # This file depends on bashcompinit for bash completion
 [ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] && source "$HOME/dotfiles/shell_agnostic_rc.inc"
@@ -45,10 +43,6 @@ setopt appendhistory autocd beep nomatch notify
 # End of lines configured by zsh-newuser-install
 
 export KEYTIMEOUT=1
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 
 alias fuck='$(thefuck $(fc -ln -1))'
 
@@ -95,3 +89,12 @@ if ! zgen saved; then
 
   zgen save
 fi
+
+
+## Keybinds
+bindkey -M viins "$terminfo[kcuu1]" history-substring-search-up
+bindkey -M viins "$terminfo[kcud1]" history-substring-search-down
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
