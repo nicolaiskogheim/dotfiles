@@ -24,10 +24,6 @@ zmodload zsh/terminfo
 # TODO: auto download zgen
 [ -f "$HOME/dotfiles/assets/zgen.zsh" ] && source "$HOME/dotfiles/assets/zgen.zsh"
 
-# TODO: auto download fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag -l -g ""'
-
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
 ENABLE_CORRECTION="true"
@@ -89,6 +85,10 @@ if ! zgen saved; then
 
   zgen save
 fi
+
+# TODO: auto download fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 
 ## Keybinds
