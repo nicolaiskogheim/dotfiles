@@ -40,7 +40,9 @@ setopt appendhistory autocd beep nomatch notify
 
 export KEYTIMEOUT=1
 
-alias fuck='$(thefuck $(fc -ln -1))'
+if (( $+commands[thefuck] )); then
+    eval "$(thefuck --alias)"
+fi
 
 # unalias run-help # "no such hash table element: run-help
 autoload run-help
