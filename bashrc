@@ -20,3 +20,5 @@
 
 # User defined completion
 # source /etc/bash_completion.d/* # No, please no.
+
+export HISTCONTROL=ignorespace

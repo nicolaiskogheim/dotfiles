@@ -90,6 +90,8 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
+# Omit commands beginning with a space from history.
+setopt HIST_IGNORE_SPACE
 
 ## Keybinds
 bindkey -M viins "$terminfo[kcuu1]" history-substring-search-up
