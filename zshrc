@@ -43,9 +43,11 @@ if (( $+commands[thefuck] )); then
     eval "$(thefuck --alias)"
 fi
 
-# unalias run-help # "no such hash table element: run-help
-autoload run-help
-HELPDIR=/usr/local/share/zsh/help
+# Use Zsh's help function and its installation-specific help directory.
+if (( $+aliases[run-help] )); then
+    unalias run-help
+fi
+autoload -Uz run-help
 
 # Base16 Shell
 BASE16_SHELL="${HOME}/.base16-seti.dark.sh"
