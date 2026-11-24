@@ -60,7 +60,7 @@ RPROMPT="\$(git-radar --zsh --fetch) "
 export GIT_RADAR_COLOR_BRANCH="$fg_bold[blue]"
 
 
-if ! zgen saved; then
+if (( $+functions[zgen] )) && ! zgen saved; then
 
   zgen oh-my-zsh
 
