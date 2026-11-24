@@ -591,6 +591,56 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
 let g:go_gocode_propose_source=1
 
+" Unlock the Git signing key in a terminal before starting a Fugitive commit.
+" This gives curses pinentry its own terminal so it doesn't compete with Neovim for input.
+lua << EOF
+vim.api.nvim_create_user_command("Gcommit", function()
+  local original_window = vim.api.nvim_get_current_win()
+  local cwd = vim.fn.getcwd()
+
+  vim.cmd("botright new")
+  local terminal_window = vim.api.nvim_get_current_win()
+  local terminal_buffer = vim.api.nvim_get_current_buf()
+
+  vim.fn.jobstart({ "sh", "-c", [[
+    key=$(git config --get user.signingkey)
+    if [ -z "$key" ]; then
+      printf 'No user.signingkey configured for this repository.\n' >&2
+      exit 1
+    fi
+
+    export GPG_TTY="$(tty)"
+    printf 'unlock signing key\n' |
+      gpg --local-user "$key" --sign --output /dev/null
+  ]] }, {
+    term = true,
+    cwd = cwd,
+    on_exit = function(_, code)
+      vim.schedule(function()
+        if code ~= 0 then
+          vim.notify("GPG unlock failed; commit cancelled.", vim.log.levels.ERROR)
+          return
+        end
+
+        if vim.api.nvim_win_is_valid(terminal_window) then
+          vim.api.nvim_win_close(terminal_window, true)
+        end
+        if vim.api.nvim_buf_is_valid(terminal_buffer) then
+          vim.api.nvim_buf_delete(terminal_buffer, { force = true })
+        end
+
+        if vim.api.nvim_win_is_valid(original_window) then
+          vim.api.nvim_set_current_win(original_window)
+          vim.cmd("Git commit")
+        end
+      end)
+    end,
+  })
+
+  vim.cmd("startinsert")
+end, {})
+EOF
+
 
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }

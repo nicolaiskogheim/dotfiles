@@ -1,7 +1,9 @@
 #!/bin/bash
 # vim:ft=sh
 
-export GPG_TTY=$(tty)
+if [ -t 0 ]; then
+    export GPG_TTY="$(tty)"
+fi
 
 alias ="echo omnomnom"
 alias mkdrit=mkdir
