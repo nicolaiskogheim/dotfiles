@@ -19,6 +19,8 @@ zmodload zsh/terminfo
 # TODO: auto download zgen
 # Oh My Zsh initializes completion; prevent zgen from doing it again.
 ZGEN_AUTOLOAD_COMPINIT=0
+# Load NVM when a Node-related command is first used.
+export NVM_LAZY_LOAD=true
 [ -f "$HOME/dotfiles/assets/zgen.zsh" ] && source "$HOME/dotfiles/assets/zgen.zsh"
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
