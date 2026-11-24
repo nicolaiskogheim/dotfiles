@@ -93,7 +93,7 @@ which cal 1>/dev/null 2>&1 && \
 #+ with one argument. Thus whatever string
 #+ is used will be the name of the directory
 mc() {
-    mkdir -p "$*" && cd "$*" || exit
+    mkdir -p "$*" && cd "$*" || return
 }
 
 # Move Newest Download Here
