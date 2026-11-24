@@ -353,6 +353,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     nnoremap <silent> <localleader>gs :Gstatus<CR>
     nnoremap <silent> <localleader>gd :Gdiff<CR>
     nnoremap <silent> <localleader>gb :Gblame<CR>
+    " PS: `Gcommit` is caught by some lua code further down, before ending up
+    " in vim-fugitive
     nnoremap <silent> <localleader>gc :Gcommit<CR>
     command! Greview :Git! diff --staged
     nnoremap <localleader>gr :Greview<cr>
@@ -592,7 +594,10 @@ Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/goco
 let g:go_gocode_propose_source=1
 
 " Unlock the Git signing key in a terminal before starting a Fugitive commit.
-" This gives curses pinentry its own terminal so it doesn't compete with Neovim for input.
+" This gives curses pinentry its own terminal so it doesn't compete with
+" Neovim for input.
+" PS: A key mapping is defined for `:Gcommit` (see where we load fugitive with
+" Plug) and that key mapping triggers this code here.
 lua << EOF
 vim.api.nvim_create_user_command("Gcommit", function()
   local original_window = vim.api.nvim_get_current_win()
