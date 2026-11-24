@@ -8,8 +8,6 @@ fi
 unset zsh_completions_dir
 
 zmodload zsh/complist
-autoload -Uz compinit
-compinit
 zstyle ':completion:*' show-ambiguity true
 
 autoload -U colors
@@ -21,6 +19,8 @@ zmodload zsh/terminfo
 [ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] && source "$HOME/dotfiles/shell_agnostic_rc.inc"
 
 # TODO: auto download zgen
+# Oh My Zsh initializes completion; prevent zgen from doing it again.
+ZGEN_AUTOLOAD_COMPINIT=0
 [ -f "$HOME/dotfiles/assets/zgen.zsh" ] && source "$HOME/dotfiles/assets/zgen.zsh"
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
@@ -85,6 +85,12 @@ if (( $+functions[zgen] )) && ! zgen saved; then
   zgen load lukechilds/zsh-nvm
 
   zgen save
+fi
+
+# Initialize completion if the plugin setup hasn't already done so.
+if (( ! $+_comps )); then
+   autoload -Uz compinit
+   compinit
 fi
 
 # TODO: auto download fzf
