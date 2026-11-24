@@ -1,5 +1,3 @@
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 # Make zgen's extra completions available before completion initialization.
 zsh_completions_dir="${ZGEN_DIR:-$HOME/.zgen}/zsh-users/zsh-completions-master/src"
 if [[ -d "$zsh_completions_dir" ]]; then
