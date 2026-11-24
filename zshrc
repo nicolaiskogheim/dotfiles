@@ -1,5 +1,12 @@
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+# Make zgen's extra completions available before completion initialization.
+zsh_completions_dir="${ZGEN_DIR:-$HOME/.zgen}/zsh-users/zsh-completions-master/src"
+if [[ -d "$zsh_completions_dir" ]]; then
+  fpath=("$zsh_completions_dir" $fpath)
+fi
+unset zsh_completions_dir
+
 zmodload zsh/complist
 autoload -Uz compinit
 compinit
