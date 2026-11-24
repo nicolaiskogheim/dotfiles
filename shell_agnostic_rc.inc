@@ -69,8 +69,8 @@ topofminute() {
 #  I use Ctrl-S to navigate left in tmux and vim.
 stty -ixon
 
+# Set both because programs differ in which editor variable they use.
 export EDITOR=nvim
-# Arch uses VISUAL instead of EDITOR
 export VISUAL="${EDITOR}"
 
 # Neovim doesn't like this
