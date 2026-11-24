@@ -1,8 +1,3 @@
-#The following lines were added by compinstall
-zstyle :compinstall filename '/Users/nicolai/.zshrc'
-
-# End of lines added by compinstall
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 zmodload zsh/complist
