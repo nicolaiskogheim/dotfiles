@@ -71,7 +71,7 @@ stty -ixon
 
 export EDITOR=nvim
 # Arch uses VISUAL instead of EDITOR
-export VISUAL=vim
+export VISUAL="${EDITOR}"
 
 # Neovim doesn't like this
 # export TERM="xterm-256color"
