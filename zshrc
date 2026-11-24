@@ -6,7 +6,6 @@ fi
 unset zsh_completions_dir
 
 zmodload zsh/complist
-zstyle ':completion:*' show-ambiguity true
 
 autoload -U colors
 colors
