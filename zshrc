@@ -77,7 +77,6 @@ if (( $+functions[zgen] )) && ! zgen saved; then
 
   zgen load Lokaltog/powerline
   zgen oh-my-zsh plugins/colored-man-pages
-  zgen load chrissicool/zsh-256color
   # zgen oh-my-zsh themes/robbyrussell
   # zgen load nicolaiskogheim/prompt prompt
   zgen load noh4ck/zenv
