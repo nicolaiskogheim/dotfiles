@@ -108,3 +108,10 @@ bindkey -M viins '^[[A' history-substring-search-up
 bindkey -M viins '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+# Load machine-specific Zsh setup after plugins and completion initialization.
+local_zsh_config="$HOME/dotfiles/local/$(hostname).zsh"
+if [[ -f "$local_zsh_config" ]]; then
+    source "$local_zsh_config"
+fi
+unset local_zsh_config
