@@ -10,8 +10,6 @@ unset zsh_completions_dir
 zmodload zsh/complist
 autoload -Uz compinit
 compinit
-autoload bashcompinit
-bashcompinit
 zstyle ':completion:*' show-ambiguity true
 
 autoload -U colors
@@ -20,7 +18,6 @@ zstyle ':completion:*' show-ambiguity "1;2;$color[fg-red]"
 
 zmodload zsh/terminfo
 
-# This file depends on bashcompinit for bash completion
 [ -f "$HOME/dotfiles/shell_agnostic_rc.inc" ] && source "$HOME/dotfiles/shell_agnostic_rc.inc"
 
 # TODO: auto download zgen
